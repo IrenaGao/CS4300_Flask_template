@@ -237,7 +237,7 @@ def search():
         if error == "":
             # output_message = "Your search was location: " + query_loc + "categories: " + query_cat[0] + ", radius: " + query_rad
             exists = True
-            data = get_covid_data(query_cat[0], search_option, query_loc, query_rad, 2.0)
+            data = get_covid_data(query_cat[0], search_option, query_loc, query_rad, query_rat)
     else:
         search_option = "index_page"
 
