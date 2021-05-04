@@ -203,13 +203,36 @@ def search():
             query_loc = request.args.get('search_loc')
             query_rad = request.args.get('search_rad')
             query_cat = request.args.getlist('search_cat')
+            query_rat = request.args.get('search_rat')
+            if (not query_loc) or (query_loc==""):
+                error = "Please enter an address"
+            if (not query_cat) or (query_cat==""):
+                error = "Please enter at least one category"
+            if (not query_rad):
+                query_rad = 3000
+            if ((not query_rad.isnumeric()) or float(query_rad)<0):
+                error = "Please enter a valid distance (positive number)"
+            if (not query_rat):
+                query_rat = 0
+            if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
+                error = "Please enter a valid rating (integer between 0 and 5)"
 
         elif search_option == "keyword":
             query_loc = request.args.get('search_key')
-            search_option="keyword"
+            query_rat = request.args.get('search_rat')
             # TODO: remove these after updating get_covid_data
             query_cat = ['establishment']
             query_rad = 3000
+            if (not query_loc) or (query_loc==""):
+                error = "Please enter a keyword"
+            if (not query_rat):
+                query_rat = 0
+            if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
+                error = "Please enter a valid rating (integer between 0 and 5)"
+        
+        else:
+            # search option modified by user
+            error = "Please do not modify the search option in the url"
 
         if error == "":
             # output_message = "Your search was location: " + query_loc + "categories: " + query_cat[0] + ", radius: " + query_rad

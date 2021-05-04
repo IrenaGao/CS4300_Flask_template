@@ -62,7 +62,7 @@
                                 <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
                                     <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please fill in the fields of either one and hit search. Hover over the icons for more instructions.</p>
                                 </div>                                
-                                <form action="#result-dest" method="get" class="tm-search-form tm-section-pad-2" style="padding-bottom: 0;">
+                                <form action="#" method="get" class="tm-search-form tm-section-pad-2" style="padding-bottom: 0;">
                                     <input type="hidden" name="search_option" value="exact_address">
                                     <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <div class="separator">Option 1: Exact Address Search</div>
@@ -123,7 +123,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form action="#result-dest" method="get" class="tm-search-form tm-section-pad-2">
+                                <form action="#" method="get" class="tm-search-form tm-section-pad-2">
                                     <input type="hidden" name="search_option" value="keyword">
                                     <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <div class="separator">Option 2: Keyword Search</div>
@@ -158,7 +158,9 @@
                                     </div>
                                     
                                       {% if error %}
-                                        <p style="color: #ff0033; font-weight: 650; margin-left: 25%;">{{error}}</p>
+                                        <script>
+                                        alert("{{error}}");
+                                        </script>
                                       {% endif %}
                                       <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <p class="tm-lh-0 text-center tm-margin-b-0 tm-color-primary" id="clear-input">Clear inputs</p>
@@ -174,13 +176,13 @@
                                         'search_rat': urlParams.get('search_rat'),
                                         'search_key': urlParams.get('search_key'),
                                     };
-                                    if (inputs['search_loc']) {
+                                    if ('{{search_option}}' == "exact_address") {
                                         document.getElementById('search_loc').value = inputs['search_loc'];
                                         document.getElementById('search_rat1').value = inputs['search_rat']
                                     }
                                     if (inputs['search_cat']) {document.getElementById('search_cat').value = inputs['search_cat'];}
                                     if (inputs['search_rad']) {document.getElementById('search_rad').value = inputs['search_rad'];}
-                                    if (inputs['search_key']) {
+                                    if ('{{search_option}}' == "keyword") {
                                         document.getElementById('search_key').value = inputs['search_key'];
                                         document.getElementById('search_rat2').value = inputs['search_rat']
                                     }
@@ -250,7 +252,11 @@
             <!-- Search Results -->
             <!-- Check length of data to make sure the results are not empty -->
             {% if exists and error=="" %} 
-                <script>exists = true;</script>
+                <script>
+                exists = true;
+                location.href = "#";
+                location.href = "#result-dest";
+                </script>
                 {% if data.name|length>0 %}  
                     <script>
                         hasResults = true;
