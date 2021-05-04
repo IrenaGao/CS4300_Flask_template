@@ -84,7 +84,7 @@ a:focus {
 }
 
 .tm-section-pad { padding: 30px 50px; }
-.tm-section-pad-2 { padding: 30px 40px; }
+.tm-section-pad-2 { padding: 15px 40px; }
 .tm-article-pad { padding: 28px; }
 .tm-sidebar-pad { padding: 15px 20px; }
 .tm-sidebar-pad-2 { padding: 21px 20px; }
@@ -536,7 +536,7 @@ video {
 	margin-left: 2%;
   } 
 
-.tooltipDiv {
+.tooltipDiv-2 {
     position: relative;
     display: inline-block;
 }
@@ -571,6 +571,26 @@ video {
 }
 
 .tooltipDiv:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon-tooltip{
+	width:300px;
+}
+
+.tooltiptop .tooltiptext {
+	bottom: 100%;
+	left: 50%;
+	margin-left: -300px;
+}
+
+.tooltipDiv-2:hover p{ 
+	font-weight: bold; 
+	cursor: pointer;
+}
+
+.tooltipDiv-2:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }

@@ -59,31 +59,30 @@
                     <div class="container ie-h-align-center-fix">
                         <div class="row">
                             <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+                                <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
+                                    <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please fill in the fields of either one and hit search. Hover over the icons for more instructions.</p>
+                                </div>                                
                                 <form action="#result-dest" method="get" class="tm-search-form tm-section-pad-2">
-                                    <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
-                                        <p class="tm-lh-0">1a) Enter the exact address to find nearby places (e.g. “20 W 34th St” or “20 W 34th St, New York, NY 10001”) and the radius of search (at least 100)</p>
+                                    <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
+                                        <div class="separator">Option 1: Exact Address Search</div>
+                                        <p class="tm-lh-0 text-center">Enter an exact address and we will provide the most recommended locations of your interests nearby</p>
                                     </div>
                                     <div class="form-row tm-search-form-row">
                                         <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100">
-                                            <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
+                                            <div class="tooltipDiv tooltiptop">
+                                                <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
+                                                <span class="tooltiptext icon-tooltip">Enter your location of interest. (e.g., “20 W 34th St” or “20 W 34th St, New York, NY 10001”)</span>
+                                            </div>
                                             <input name="search_loc" type="text" class="form-control" id="search_loc" placeholder="Address">
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100">
-                                            <i class="fa fa-car fa-2x tm-form-element-icon"></i>
-                                            <input name="search_rad" type="number" class="form-control" id="search_rad" placeholder="Max Distance (in meters)">
+                                            <div class="tooltipDiv tooltiptop">
+                                                <i class="fa fa-car fa-2x tm-form-element-icon"></i>
+                                                <span class="tooltiptext icon-tooltip">Enter the search radius (in meters). Min radius is 100 m</span>
+                                            </div>
+                                            <input name="search_rad" type="number" class="form-control" id="search_rad" placeholder="Max Distance (optional)">
                                         </div>                                       
                                     </div>
-                                    <div class="separator">OR</div>
-                                    <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
-                                        <p class="tm-lh-0">1b) Enter the name of your desired place (e.g. "McDonalds")</p>
-                                    </div>
-                                    <div class="form-row tm-search-form-row">
-                                        <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100">
-                                            <i class="fa fa-star fa-2x tm-form-element-icon"></i>
-                                            <input name="search_key" type="text" class="form-control" id="search_key" placeholder="Keyword">
-                                        </div>
-                                    </div>
-                                    <p class="tm-lh-0">2) Enter your desired categorie(s), separating by comma or by pressing "Enter" (e.g. "hotel, restaurant,") and min. required Google rating</p>
                                     <div class="form-row tm-search-form-row">
                                         <div class="form-group tm-form-element tm-form-element-100" id="search_cat_container">
                                             <select placeholder="Categories" id="search_cat" name="search_cat">
@@ -105,7 +104,7 @@
                                         </div> 
                                         <div class="form-group tm-form-element tm-form-element-100">                                           
                                             <select name="search_rat" class="form-control tm-select" id="search_rat">
-                                                <option value="">Min Rating</option>
+                                                <option value="">Min Rating (optional)</option>
                                                 <option value="0">0</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -113,12 +112,49 @@
                                                 <option value="4">4</option>
                                                 <option value="5">5</option>
                                             </select>
-                                            <i class="fa  fa-thumbs-up fa-2x tm-form-element-icon"></i>
+                                            <div class="tooltipDiv tooltiptop">
+                                                <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
+                                                <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
+                                            </div>
                                         </div>
-                                        <div class="form-group tm-form-element">
+                                        <div class="form-group tm-form-element ">
                                             <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
                                         </div>
-                                      </div>
+                                    </div>
+                                </form>
+                                <form action="#result-dest" method="get" class="tm-search-form tm-section-pad-2">
+                                    <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
+                                        <div class="separator">Option 2: Keyword Search</div>
+                                        <p class="tm-lh-0 text-center">Enter a keyword and we will provide you with the rankings of the location you are looking for</p>
+                                    </div>
+                                    <div class="form-row tm-search-form-row">
+                                        <div class="form-group tm-form-element tm-form-element-100">
+                                            <div class="tooltipDiv tooltiptop">
+                                                <i class="fa fa-star fa-2x tm-form-element-icon"></i>
+                                                <span class="tooltiptext icon-tooltip">Enter your keyword of interest (e.g., "McDonald's")</span>
+                                            </div>
+                                            <input name="search_key" type="text" class="form-control" id="search_key" placeholder="Keyword">
+                                        </div>
+                                        <div class="form-group tm-form-element tm-form-element-100">                                           
+                                            <select name="search_rat" class="form-control tm-select" id="search_rat">
+                                                <option value="">Min Rating (optional)</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                            <div class="tooltipDiv tooltiptop">
+                                                <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
+                                                <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group tm-form-element ">
+                                            <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
+                                        </div>
+                                    </div>
+                                    
                                       {% if error %}
                                         <p style="color: #ff0033; font-weight: 650; margin-left: 25%;">{{error}}</p>
                                       {% endif %}
@@ -152,7 +188,7 @@
                             <h2 class="tm-section-title" id='mapHeader'>Get COVID-19 Information with Our App</h2>
                             <p class="tm-color-white tm-section-subtitle" id='mapText1'><i class="fa fa-compass" style="padding: 0 10px;"></i>Explore Low-Risk Neighborhoods on the Heatmap</p>
                             <p class="tm-color-white tm-section-subtitle" id='mapText2'><i class="fa fa-file-code-o" style="padding: 0 10px;"></i>Learn Future Trends of COVID Cases in NYC</p>
-                            <div class="tooltipDiv">
+                            <div class="tooltipDiv-2">
                                 <p class="tm-color-white tm-section-subtitle" id='mapText3'><i class="fa fa-question" style="padding: 0 10px;"></i>How is NYC doing now? Hover over me</p>
                                 <span class="tooltiptext">The percentage of fully vaccinated population for all neighborhoods in NYC ranges from <b>14.2% to 59.7%</b>, with an average of <b>25.0%</b>. <br><br>
                                 The percentage of positive cases for all neighborhoods in NYC ranges from <b>1.3%</b> to <b>12.0%</b>, with an average of <b>5.7%</b>. <br><br>
@@ -214,7 +250,7 @@
                         <div class="container tm-pb-4">
                             <div class="text-center">
                                 <h2 id="resultHeader">Search Results</h2>
-                                <div class="tooltipDiv">
+                                <div class="tooltipDiv-2">
                                     <p class="tm-color-black tm-section-subtitle" id='mapText3'><i class="fa fa-question" style="padding: 0 10px;"></i>How were our calculations made? Hover over me</p>
                                     <span class="tooltiptext calc"><b>Price level</b> is computed as number of dollar signs ($):<br> 0 - free, 1 - inexpensive, 2 - moderate, 3 - expensive, 4 - very expensive<br><br>
                                         <b>Risk score</b> is an integrated value of normalized percent positive cases and percent fully vaccinated populations. All risk scores of NYC neighborhoods are quantized into 5 levels, from "Very Low Risk" to "Very High Risk".<br><br><b>Very Low Risk</b> falls within the top 0-20% of the neighborhoods in NYC.<br><b>Low Risk</b> falls within the top 20-40% of the neighborhoods in NYC.<br><b>Medium Risk</b> falls within the top 40-60%.<br><b>High Risk</b> falls within the top 60-80%.<br><b>Very High Risk</b> falls within the top 80-100%.

@@ -1245,7 +1245,9 @@
 	
 			var $wrapper;
 			var $control;
+			var $tooltip;
 			var $icon;
+			var $span;
 			var $control_input;
 			var $dropdown;
 			var $dropdown_content;
@@ -1261,7 +1263,9 @@
 			classes           = $input.attr('class') || '';
 	
 			$wrapper          = $('<div>').addClass(settings.wrapperClass).addClass(classes).addClass(inputMode);
-			$icon 			= $('<i>').addClass('fa fa-cutlery fa-2x tm-form-element-icon tm-fa-top').appendTo($wrapper);
+			$tooltip		= $('<div>').addClass("tooltipDiv tooltiptop").appendTo($wrapper);
+			$icon 			= $('<i>').addClass('fa fa-cutlery fa-2x tm-form-element-icon tm-fa-top').appendTo($tooltip);
+			$span			= $('<span>').addClass("tooltiptext icon-tooltip").text('Enter your desired categories, separating by comma or by pressing "Enter" (e.g., "hotel, restaurant,")').appendTo($tooltip)
 			$control          = $('<div id="selectize-control-div">').addClass(settings.inputClass).addClass('items').appendTo($wrapper);
 			$control_input    = $('<input type="text" autocomplete="off" />').appendTo($control).attr('tabindex', $input.is(':disabled') ? '-1' : self.tabIndex);
 			$dropdown_parent  = $(settings.dropdownParent || $wrapper);
