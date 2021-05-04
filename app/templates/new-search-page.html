@@ -84,12 +84,12 @@
                                             <input name="search_rad" type="number" class="form-control" id="search_rad" placeholder="Max Distance (optional)">
                                         </div>                                       
                                     </div>
-                                    <div class="form-row tm-search-form-row">
+                                    <div class="form-row tm-search-form-row" id="selectize-row">
                                         <div class="form-group tm-form-element tm-form-element-100" id="search_cat_container">
                                             <select placeholder="Categories" id="search_cat" name="search_cat">
                                             </select> 
                                             <script>
-                                                $("select#search_cat").selectize({
+                                                var selectize = $("select#search_cat").selectize({
                                                     plugins: ["remove_button"],
                                                     delimiter: ",",
                                                     maxItems: 5,
@@ -160,7 +160,10 @@
                                       {% if error %}
                                         <p style="color: #ff0033; font-weight: 650; margin-left: 25%;">{{error}}</p>
                                       {% endif %}
-                                </form>
+                                      <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
+                                        <p class="tm-lh-0 text-center tm-margin-b-0 tm-color-primary" id="clear-input">Clear inputs</p>
+                                    </div>  
+                                </form> 
                                 <script>
                                     // Fill inputs with url
                                     const urlParams = new URLSearchParams(window.location.search);
@@ -576,9 +579,9 @@
                 }
             }
 
-                requestData();
+            requestData();
 
-                function setPageNav(){
+            function setPageNav(){
                 if($(window).width() > 991) {
                     $('#tm-top-bar').singlePageNav({
                         currentClass:'active',
@@ -645,18 +648,27 @@
                 
             }
 
-            $(document).ready(function () {
-                $('select#keywords').selectize({
-                delimiter: ',',
-                persist: false,
-                create: function(input) {
-                    return {
-                        value: input,
-                        text: input
-                    }
-                }
-            });
-       });
+            var clearBtn = document.getElementById("clear-input");
+            clearBtn.onclick = function(){
+                document.getElementById('search_loc').value = '';
+                document.getElementById('search_rat1').value = '';
+                document.getElementById('search_cat').value = '';
+                document.getElementById('search_rad').value = '';
+                document.getElementById('search_key').value = '';
+                document.getElementById('search_rat2').value = '';
+            }
+
+            // $(document).ready(function () {
+            //     $('select#keywords').selectize({
+            //     delimiter: ',',
+            //     persist: false,
+            //     create: function(input) {
+            //         return {
+            //             value: input,
+            //             text: input
+            //         }
+            //     }
+            // });
 
         </script>             
 
