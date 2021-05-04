@@ -191,22 +191,25 @@ def get_covid_data(category, search_option, location, radius, min_rating):
 
 @irsystem.route('/', methods=['GET'])
 def search():
-    query_rad = request.args.get('search_rad')
-    query_cat = request.args.getlist('search_cat')
-    query_loc = ""
-    search_option = ""
     error = ""
     data = []
     output_message = ""
     exists = False
-    if request.args.get('search_loc') == "":
-        query_loc = request.args.get('search_key')
-        search_option="keyword"
-    elif request.args.get('search_key') == "":
+    search_type = request.args.get('search_type')
+
+    if search_type == "address":
         query_loc = request.args.get('search_loc')
         search_option="exact_address"
-    elif request.args.get('search_key') != None and request.args.get('search_loc') != None:
-        error = "Only input a specific address (e.g. 20 W 34th St) OR a keyword (e.g. McDonalds)!"
+        query_rad = request.args.get('search_rad')
+        query_cat = request.args.getlist('search_cat')
+
+    else:
+        query_loc = request.args.get('search_key')
+        search_option="keyword"
+        # TODO: remove these after updating get_covid_data
+        query_cat = ['establishment']
+        query_rad = 3000
+
     if error == "" and query_loc != "":
         # output_message = "Your search was location: " + query_loc + "categories: " + query_cat[0] + ", radius: " + query_rad
         exists = True

@@ -62,7 +62,8 @@
                                 <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
                                     <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please fill in the fields of either one and hit search. Hover over the icons for more instructions.</p>
                                 </div>                                
-                                <form action="#result-dest" method="get" class="tm-search-form tm-section-pad-2">
+                                <form action="#result-dest" method="get" class="tm-search-form tm-section-pad-2" style="padding-bottom: 0;">
+                                    <input type="hidden" name="search_Type" value="address">
                                     <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <div class="separator">Option 1: Exact Address Search</div>
                                         <p class="tm-lh-0 text-center">Enter an exact address and we will provide the most recommended locations of your interests nearby</p>
@@ -123,6 +124,7 @@
                                     </div>
                                 </form>
                                 <form action="#result-dest" method="get" class="tm-search-form tm-section-pad-2">
+                                    <input type="hidden" name="search_Type" value="keyword">
                                     <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <div class="separator">Option 2: Keyword Search</div>
                                         <p class="tm-lh-0 text-center">Enter a keyword and we will provide you with the rankings of the location you are looking for</p>
