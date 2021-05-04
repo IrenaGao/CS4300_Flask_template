@@ -195,25 +195,28 @@ def search():
     data = []
     output_message = ""
     exists = False
-    search_type = request.args.get('search_type')
+    search_option = request.args.get('search_option')
 
-    if search_type == "address":
-        query_loc = request.args.get('search_loc')
-        search_option="exact_address"
-        query_rad = request.args.get('search_rad')
-        query_cat = request.args.getlist('search_cat')
+    if search_option:
+        # search exists
+        if search_option == "exact_address":
+            query_loc = request.args.get('search_loc')
+            query_rad = request.args.get('search_rad')
+            query_cat = request.args.getlist('search_cat')
 
+        elif search_option == "keyword":
+            query_loc = request.args.get('search_key')
+            search_option="keyword"
+            # TODO: remove these after updating get_covid_data
+            query_cat = ['establishment']
+            query_rad = 3000
+
+        if error == "":
+            # output_message = "Your search was location: " + query_loc + "categories: " + query_cat[0] + ", radius: " + query_rad
+            exists = True
+            data = get_covid_data(query_cat[0], search_option, query_loc, query_rad, 2.0)
     else:
-        query_loc = request.args.get('search_key')
-        search_option="keyword"
-        # TODO: remove these after updating get_covid_data
-        query_cat = ['establishment']
-        query_rad = 3000
-
-    if error == "" and query_loc != "":
-        # output_message = "Your search was location: " + query_loc + "categories: " + query_cat[0] + ", radius: " + query_rad
-        exists = True
-        data = get_covid_data(query_cat[0], search_option, query_loc, query_rad, 2.0)
+        search_option = "index_page"
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, output_message=output_message, data=data, exists=exists, search_option=search_option, error=error)
 
