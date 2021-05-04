@@ -260,7 +260,8 @@
                                 <div class="tooltipDiv-2">
                                     <p class="tm-color-black tm-section-subtitle" id='mapText3'><i class="fa fa-question" style="padding: 0 10px;"></i>How were our calculations made? Hover over me</p>
                                     <span class="tooltiptext calc"><b>Price level</b> is computed as number of dollar signs ($):<br> 0 - free, 1 - inexpensive, 2 - moderate, 3 - expensive, 4 - very expensive<br><br>
-                                        <b>Risk score</b> is an integrated value of normalized percent positive cases and percent fully vaccinated populations. All risk scores of NYC neighborhoods are quantized into 5 levels, from "Very Low Risk" to "Very High Risk".<br><br><b>Very Low Risk</b> falls within the top 0-20% of the neighborhoods in NYC.<br><b>Low Risk</b> falls within the top 20-40% of the neighborhoods in NYC.<br><b>Medium Risk</b> falls within the top 40-60%.<br><b>High Risk</b> falls within the top 60-80%.<br><b>Very High Risk</b> falls within the top 80-100%.
+                                        <b>Positive cases</b> indicates the aggregated COVID-19 cases in the ZIP code area in the last 7 days <br><br>
+                                        <b>Risk score</b> is an integrated value of normalized percent positive cases and percent fully vaccinated populations. All risk scores of NYC neighborhoods are quantized into 5 levels, from "Lowest Risk" to "Highest Risk".<br><br><b>Lowest Risk</b> falls within the top 0-20% of the neighborhoods in NYC.<br><b>Lower Risk</b> falls within the top 20-40% of the neighborhoods in NYC.<br><b>Average Risk</b> falls within the top 40-60%.<br><b>Higher Risk</b> falls within the top 60-80%.<br><b>Highest Risk</b> falls within the top 80-100%.
                                     </span>
                                 </div>
                                 {% for d in data.name %}
@@ -305,6 +306,7 @@
                                             {% endif %}
                                             <!-- <span>Google Rating: {{data.rating[d]}}/5</span> -->
                                         </p>
+                                        <div class="separator">COVID-19 Data in [Area Name]</div>
                                         <p>
                                             <span><span class="tm-font-semibold">Positive Cases:</span> {{data.positive_cases[d]}}</span>
                                             <span><span class="tm-font-semibold">Fully Vaccinated:</span> {{'%0.1f'| format(100*data.full_vax[d]|float)}}%</span>
@@ -611,11 +613,11 @@
 
                 // dict of risks and colors
                 riskDict = {
-                    "VERY LOW RISK": "#008000",
-                    "LOW RISK": "#90ee90",
-                    "MEDIAN RISK": "#e5e619",
-                    "HIGH RISK":"#FF8C00",
-                    "VERY HIGH RISK": "#FF0000"
+                    "LOWEST RISK": "#008000",
+                    "LOWER RISK": "#90ee90",
+                    "AVERAGE RISK": "#e5e619",
+                    "HIGHER RISK":"#FF8C00",
+                    "HIGHERST RISK": "#FF0000"
                 };
 
                 riskLevels = document.getElementsByClassName("risk-color");

@@ -15,7 +15,7 @@ n_percent_positive = (final_data['%_positive'] - final_data['%_positive'].mean()
 
 # updated finaldata with normalization and risk levels computed
 final_data["n_risk"] = n_full_vax - n_percent_positive  # risk is % full vax - % positive
-risk_labels_5 = ['Very High Risk', 'High Risk', 'Median Risk', 'Low Risk', 'Very Low Risk']
+risk_labels_5 = ['Highest Risk', 'Higher Risk', 'Average risk', 'Lower Risk', 'Lowest Risk']
 final_data['risk_level'] = pd.qcut(final_data["n_risk"], q=[0, .2, .4, .6, .8, 1], labels=risk_labels_5)
 
 project_name = "COVID-19 Search Engine"
