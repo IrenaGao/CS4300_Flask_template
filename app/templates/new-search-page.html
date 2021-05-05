@@ -219,7 +219,6 @@
                     </div>        
                 </div>
             </div>
-
             <!-- Variable in JS to store info -->
             <script>
                 var resultLatLon = {}; 
@@ -229,7 +228,7 @@
             </script>
             <!-- Search Results -->
             <!-- Check length of data to make sure the results are not empty -->
-            {% if exists and error=="" %} 
+            {% if data.name|length>0 %}
                 <script>
                 exists = true;
                 location.href = "#";

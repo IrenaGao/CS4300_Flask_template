@@ -141,10 +141,6 @@ def get_covid_data(category, search_option, location, radius, min_rating):
 
 @irsystem.route('/', methods=['GET'])
 def search():
-    query_rad = request.args.get('search_rad')
-    query_cat = request.args.getlist('search_cat')
-    query_rat = request.args.get('search_rat')
-    query_loc = ""
     search_option = ""
     error = ""
     data = []
@@ -174,7 +170,6 @@ def search():
         elif search_option == "keyword":
             query_loc = request.args.get('search_key')
             query_rat = request.args.get('search_rat')
-            # TODO: remove these after updating get_covid_data
             query_cat = ['establishment']
             query_rad = '3000'
             if (not query_loc) or (query_loc==""):
@@ -205,6 +200,7 @@ def search():
         except categoryMismatch:
             error = "There is no match with the categories you entered, please enter at least one valid category. \n"
             error += "Examples include 'museum','movie theater','bar','restaurant','shopping mall','gym' and so on."
+    print(data)
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, exists=exists, search_option=search_option, error=error)
 
