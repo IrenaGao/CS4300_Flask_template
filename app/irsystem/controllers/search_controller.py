@@ -149,7 +149,9 @@ def search():
 
     # if search_option:
         # search exists
-    if request.args.get("search_key") == "":
+    if request.args.get("search_key") == "" and request.args.get("search_loc") == "":
+        error = "Please enter an address or a keyword"
+    elif request.args.get("search_key") == "":
         query_loc = request.args.get('search_loc')
         query_rad = request.args.get('search_rad')
         query_cat = request.args.getlist('search_cat')
@@ -190,8 +192,9 @@ def search():
         except categoryMismatch:
             error = "There is no match with the categories you entered, please enter at least one valid category. \n"
             error += "Examples include 'museum','movie theater','bar','restaurant','shopping mall','gym' and so on."
-    print(error)
-    print("error")
+        except:
+            error = "There is an error with your query."
+    print(data)
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, search_option=search_option, error=error)
 

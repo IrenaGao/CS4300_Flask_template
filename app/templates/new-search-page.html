@@ -52,7 +52,7 @@
                         <a class="navbar-brand mr-auto" href="#">
                             <!-- Image edited from: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.valamis.com%2Fcompany%2Fnews%2Fvalamis-operations-during-the-covid-19-coronavirus&psig=AOvVaw2snEKOY2GFlJ2xjz8Jf__N&ust=1619404195893000&source=images&cd=vfe&ved=0CA0QjhxqFwoTCKjI5_CsmPACFQAAAAAdAAAAABAD -->
                             <img src="./static/logo.jpg" alt="Site logo">
-                            COVID Seach Engine
+                            COVID Search Engine
                         </a>
                         <!-- Adjust the height of tm-top-bar if need more rows-->
                         <p class="about">During times of pandemic, we should be able to make safe choices on which
@@ -70,9 +70,11 @@
                     <div class="row">
                         <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
                             <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
-                                <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please
+                                <p class="tm-lh-0 text-center tm-margin-b-0">
+                                    Our app provides two search options. Please
                                     fill in the fields of either one and hit search. Hover over the icons for more
-                                    instructions.</p>
+                                    instructions.
+                                </p>
                             </div>
                             <form action="#" method="get" class="tm-search-form tm-section-pad-2"
                                 style="padding-bottom: 0;">
@@ -273,12 +275,14 @@
     </script>
     <!-- Search Results -->
     <!-- Check length of data to make sure the results are not empty -->
-    {% if error=="" %}
     <script>
         exists = true;
         location.href = "#";
         location.href = "#result-dest";
     </script>
+    {% if not data.name %}
+        <p style="text-align: center; color: red; font-size: 25px">There are no results available! Try again with a different query.</p>
+    {% endif %}
     {% if data.name|length>0 %}
     <script>
         hasResults = true;
@@ -356,7 +360,7 @@
                             {% endif %}
                             <!-- <span>Google Rating: {{data.rating[d]}}/5</span> -->
                         </p>
-                        <div class="separator">COVID-19 Data in [Neighborhood Name]</div>
+                        <div class="separator" style="margin-top: 5%;">COVID-19 Data from {{data.neighborhood[d]}}</div>
                         <p>
                             <span><span class="tm-font-semibold">Positive Cases:</span>
                                 {{data.positive_cases[d]}}</span>
@@ -382,7 +386,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
     {% endif %}
 
     <footer class="tm-bg-dark-blue tm-section-pad-2 ">
@@ -721,7 +724,7 @@
                     document.getElementById('mapText1').innerHTML = '<b>Explore results on the interactive map</b>'
                 }
                 else {
-                    document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
+                    // document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
                 }
                 document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
             }
