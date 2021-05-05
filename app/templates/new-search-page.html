@@ -67,7 +67,7 @@
                                     <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please fill in the fields of either one and hit search. Hover over the icons for more instructions.</p>
                                 </div>                                
                                 <form action="#" method="get" class="tm-search-form tm-section-pad-2" style="padding-bottom: 0;">
-                                    <input type="hidden" name="search_option" value="exact_address">
+                                    <!-- <input type="hidden" name="search_option" value="exact_address"> -->
                                     <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <div class="separator">Option 1: Exact Address Search</div>
                                         <p class="tm-lh-0 text-center">Enter an exact address and we will provide the most recommended locations of your interests nearby</p>
@@ -117,13 +117,13 @@
                                                 <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
                                             </div>
                                         </div>
-                                        <div class="form-group tm-form-element ">
+                                        <!-- <div class="form-group tm-form-element ">
                                             <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
-                                        </div>
+                                        </div> -->
                                     </div>
-                                </form>
-                                <form action="#" method="get" class="tm-search-form tm-section-pad-2">
-                                    <input type="hidden" name="search_option" value="keyword">
+                                <!-- </form>
+                                <form action="#" method="get" class="tm-search-form tm-section-pad-2"> -->
+                                    <!-- <input type="hidden" name="search_option" value="keyword"> -->
                                     <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <div class="separator">Option 2: Keyword Search</div>
                                         <p class="tm-lh-0 text-center">Enter a keyword and we will provide you with the rankings of the location you are looking for</p>
@@ -136,7 +136,7 @@
                                             </div>
                                             <input name="search_key" type="text" class="form-control" id="search_key" placeholder="Keyword">
                                         </div>
-                                        <div class="form-group tm-form-element tm-form-element-100">                                           
+                                        <!-- <div class="form-group tm-form-element tm-form-element-100">                                           
                                             <select name="search_rat" class="form-control tm-select" id="search_rat2">
                                                 <option value="">Min Rating (optional)</option>
                                                 <option value="0">0</option>
@@ -150,7 +150,7 @@
                                                 <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
                                                 <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group tm-form-element ">
                                             <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
                                         </div>
@@ -160,6 +160,7 @@
                                         <script>
                                         alert("{{error}}");
                                         </script>
+                                        {{error}}
                                       {% endif %}
                                       <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                         <p class="tm-lh-0 text-center tm-margin-b-0 tm-color-primary" id="clear-input">Clear inputs</p>
@@ -228,11 +229,11 @@
             </script>
             <!-- Search Results -->
             <!-- Check length of data to make sure the results are not empty -->
-            {% if data.name|length>0 %}
+            {% if error=="" %}
                 <script>
-                exists = true;
-                location.href = "#";
-                location.href = "#result-dest";
+                    exists = true;
+                    location.href = "#";
+                    location.href = "#result-dest";
                 </script>
                 {% if data.name|length>0 %}  
                     <script>
@@ -248,7 +249,7 @@
                                     <span class="tooltiptext calc"><b>Price level</b> is computed as number of dollar signs ($):<br> 0 - free, 1 - inexpensive, 2 - moderate, 3 - expensive, 4 - very expensive<br><br>
                                         <b>Positive cases</b> indicates the aggregated COVID-19 cases in the ZIP code area in the last 7 days <br><br>
                                         <b>Risk score</b> is an integrated value of normalized percent positive cases and percent fully vaccinated populations. All risk scores of NYC neighborhoods are quantized into 5 levels, from "Lowest Risk" to "Highest Risk".<br><br><b>Lowest Risk</b> falls within the top 0-20% of the neighborhoods in NYC.<br><b>Lower Risk</b> falls within the top 20-40% of the neighborhoods in NYC.<br><b>Average Risk</b> falls within the top 40-60%.<br><b>Higher Risk</b> falls within the top 60-80%.<br><b>Highest Risk</b> falls within the top 80-100%.<br><br>
-                                        <b>Note:<b> for results across multiple neighborhoods, it will be assigned with mean values of COVID data in the NYC by default.
+                                        <b>Note:</b> for results across multiple neighborhoods, it will be assigned with mean values of COVID data in the NYC by default.
                                     </span>
                                 </div>
                                 {% for d in data.name %}
@@ -270,7 +271,7 @@
                                     <div class="collapsible">
                                         <!-- <i class="fa tm-fa-6x fa-legal tm-color-primary tm-margin-b-20"></i> -->
                                         <h3 class="tm-color-primary tm-article-title-1">{{data.name[d]}}</h3>
-                                        <span>{{data.rating[d]}}/5<br>
+                                        <span>{{data.rating[d]}}/5
                                             <div class="star-ratings-css"><span id="starRating"></span>
                                                 <div class="star-ratings-css-top" id="star-ratings-css-top-{{d}}"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                                                 <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
@@ -515,7 +516,8 @@
 
                 if (exists){
                     // change headers
-                    if (searchOption==="keyword"){
+                    console.log("second exists");
+                    if (document.getElementById('search_key').value != ''){
                         document.getElementById('mapHeader').innerHTML = "Showing Results for "+ inputs['search_key'];
                     }
                     else{
@@ -607,7 +609,7 @@
                     'search_key': urlParams.get('search_key'),
                 };
                 console.log(inputs['search_cat'])
-                if ('{{search_option}}' == "exact_address") {
+                if (document.getElementById('search_key').value == '') {
                     document.getElementById('search_loc').value = inputs['search_loc'];
                     document.getElementById('search_rat1').value = inputs['search_rat']
                 }
@@ -623,10 +625,10 @@
                         } 
                     });
                 }
+
                 if (inputs['search_rad']) {document.getElementById('search_rad').value = inputs['search_rad'];}
-                if ('{{search_option}}' == "keyword") {
+                if (document.getElementById('search_loc').value == '') {
                     document.getElementById('search_key').value = inputs['search_key'];
-                    document.getElementById('search_rat2').value = inputs['search_rat']
                 }
 
                 var clearBtn = document.getElementById("clear-input");
@@ -636,17 +638,24 @@
                     // document.getElementById('search_cat').value = '';
                     document.getElementById('search_rad').value = '';
                     document.getElementById('search_key').value = '';
-                    document.getElementById('search_rat2').value = '';
+                    // document.getElementById('search_rat2').value = '';
                     $multiSelect.val(null).trigger("change");
                 }
 
+                console.log(exists);
+                console.log("hi");
+
                 if (exists){
                     // change headers
-                    if (searchOption==="keyword"){
-                        document.getElementById('mapHeader').innerHTML = "Showing Results for "+ inputs['search_key'];
+                    console.log("hi");
+                    console.log(document.getElementById('search_key'));
+                    if (document.getElementById('search_key').value != ''){
+                        console.log("here");
+                        document.getElementById('mapHeader').innerHTML = "Showing results for "+ inputs['search_key'];
                     }
                     else{
-                        document.getElementById('mapHeader').innerHTML = "Showing "+ inputs['search_cat'] + " near " + inputs['search_loc'];
+                        console.log("here?")
+                        document.getElementById('mapHeader').innerHTML = "Showing "+ inputs['search_cat'] + "s near " + inputs['search_loc'];
                     }
                     if (hasResults && count >= 3){
                         document.getElementById('mapText1').innerHTML='<b>Explore results on the interactive map</b>'

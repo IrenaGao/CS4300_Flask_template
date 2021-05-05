@@ -8,7 +8,7 @@ def get_types_synonyms():
     built_in_categories = ['airport','amusement_park','aquarium','art_gallery','atm','bakery','bank','bar',
     'beauty_salon','book_store','cafe','church','dentist','doctor', 'drugstore','food','gym','hair_care','hospital',
     'library','lodging','movie_theater','museum','night_club','park','parking','pharmacy','post_office',
-    'restaurant','school','shopping_mall','spa','store','supermarket','university','zoo']
+    'restaurant','school','shopping_mall','spa','store','supermarket','university','zoo', 'establishment']
 
     # synonym dictionary
     synonyms = {}
@@ -268,7 +268,9 @@ def pre_get_results_exact_address(address, category, radius):
 def merge_postings(data, categories):
     sim_list = []
     for res in data.index:
-        sim_score = 0;
+        sim_score = 0
+        print("data types")
+        print(data["types"][res])
         if data["types"][res] != None:
             A = sorted(data["types"][res])
             B = sorted(categories)

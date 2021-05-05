@@ -143,66 +143,57 @@ def get_covid_data(category, search_option, location, radius, min_rating):
 def search():
     search_option = ""
     error = ""
+    query_loc = ""
     data = []
-    exists = False
-    search_option = request.args.get('search_option')
+    search_option = ""
 
-    if search_option:
+    # if search_option:
         # search exists
-        if search_option == "exact_address":
-            query_loc = request.args.get('search_loc')
-            query_rad = request.args.get('search_rad')
-            query_cat = request.args.getlist('search_cat')
-            query_rat = request.args.get('search_rat')
-            if (not query_loc) or (query_loc==""):
-                error = "Please enter an address"
-            if (not query_cat) or (query_cat==""):
-                error = "Please enter at least one category"
-            if (not query_rad):
-                query_rad = '3000'
-            if ((not query_rad.isnumeric()) or float(query_rad)<0):
-                error = "Please enter a valid distance (positive number)"
-            if (not query_rat):
-                query_rat = '0'
-            if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
-                error = "Please enter a valid rating (integer between 0 and 5)"
-
-        elif search_option == "keyword":
-            query_loc = request.args.get('search_key')
-            query_rat = request.args.get('search_rat')
-            query_cat = ['establishment']
+    if request.args.get("search_key") == "":
+        query_loc = request.args.get('search_loc')
+        query_rad = request.args.get('search_rad')
+        query_cat = request.args.getlist('search_cat')
+        query_rat = request.args.get('search_rat')
+        search_option = "exact_address"
+        if (not query_loc) or (query_loc==""):
+            error = "Please enter an address"
+        if (not query_cat) or (query_cat==""):
+            error = "Please enter at least one category"
+        if (not query_rad):
             query_rad = '3000'
-            if (not query_loc) or (query_loc==""):
-                error = "Please enter a keyword"
-            if (not query_rat):
-                query_rat = '0'
-            if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
-                error = "Please enter a valid rating (integer between 0 and 5)"
+        if ((not query_rad.isnumeric()) or float(query_rad)<0):
+            error = "Please enter a valid distance (positive number)"
+        if (not query_rat):
+            query_rat = '0'
+        if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
+            error = "Please enter a valid rating (integer between 0 and 5)"
 
-        elif request.args.get('search_key') != None and request.args.get('search_loc') != None:
-            error = "Only input a specific address (e.g. 20 W 34th St) OR a keyword (e.g. McDonalds)!"
-        
-        else:
-            # search option modified by user
-            error = "Please do not modify the search option in the url"
+    elif request.args.get("search_loc") == "":
+        query_loc = request.args.get('search_key')
+        query_rat = request.args.get('search_rat')
+        query_cat = ['establishment']
+        query_rad = '3000'
+        search_option = "keyword"
+        if (not query_loc) or (query_loc==""):
+            error = "Please enter a keyword"
+        if (not query_rat):
+            query_rat = '0'
+        if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
+            error = "Please enter a valid rating (integer between 0 and 5)"
 
-        if error == "":
-            # output_message = "Your search was location: " + query_loc + "categories: " + query_cat[0] + ", radius: " + query_rad
-            exists = True
-            data = get_covid_data(query_cat[0], search_option, query_loc, query_rad, query_rat)
-    else:
-        search_option = "index_page"
+    elif request.args.get('search_key') != None and request.args.get('search_loc') != None:
+        error = "Only input a specific address (e.g. 20 W 34th St) OR a keyword (e.g. McDonalds)!"
 
     if error == "" and query_loc != "":
-        exists = True
         try:
             data = get_covid_data(query_cat, search_option, query_loc, query_rad, query_rat)
         except categoryMismatch:
             error = "There is no match with the categories you entered, please enter at least one valid category. \n"
             error += "Examples include 'museum','movie theater','bar','restaurant','shopping mall','gym' and so on."
-    print(data)
+    print(error)
+    print("error")
 
-    return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, exists=exists, search_option=search_option, error=error)
+    return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, search_option=search_option, error=error)
 
 
 
