@@ -446,7 +446,7 @@
             // positive cases: [0, 327]
             // 1 dose: [0.22, 0.76]
             // 2 doses: [0.14, 0.6]
-            var posCaseScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 400]);
+            var posCaseScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 200]);
             var vacScale = d3.scaleSequential(d3.interpolateBlues).domain([0, 1]);
             var fullVacScale = d3.scaleSequential(d3.interpolateGreens).domain([0, 1]);
 
@@ -484,8 +484,8 @@
             var posCaseLegend = L.control({ position: 'bottomleft' });
             posCaseLegend.onAdd = function (map) {
                 var div = L.DomUtil.create('div', 'legend'),
-                    grades = [0, 100, 200, 300, 400],
-                    labels = ['0-100', '100-200', '200-300', '300-400', '400'];
+                    grades = [0, 50, 100, 150, 200],
+                    labels = ['0-50', '50-100', '100-150', '150-200', '200'];
 
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +=
