@@ -209,11 +209,11 @@ def search():
             if (not query_cat) or (query_cat==""):
                 error = "Please enter at least one category"
             if (not query_rad):
-                query_rad = 3000
+                query_rad = '3000'
             if ((not query_rad.isnumeric()) or float(query_rad)<0):
                 error = "Please enter a valid distance (positive number)"
             if (not query_rat):
-                query_rat = 0
+                query_rat = '0'
             if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
                 error = "Please enter a valid rating (integer between 0 and 5)"
 
@@ -222,11 +222,11 @@ def search():
             query_rat = request.args.get('search_rat')
             # TODO: remove these after updating get_covid_data
             query_cat = ['establishment']
-            query_rad = 3000
+            query_rad = '3000'
             if (not query_loc) or (query_loc==""):
                 error = "Please enter a keyword"
             if (not query_rat):
-                query_rat = 0
+                query_rat = '0'
             if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
                 error = "Please enter a valid rating (integer between 0 and 5)"
         
