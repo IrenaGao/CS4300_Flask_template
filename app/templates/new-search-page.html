@@ -1,8 +1,9 @@
 <!-- Template adapted from Tooplate 2095 Level https://www.tooplate.com/view/2095-level -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,19 +11,20 @@
     <title>Covid Search Engine</title>
 
     <!-- load stylesheets -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="./static/font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
-    <link rel="stylesheet" href="./static/bootstrap.min.css">                                      <!-- Bootstrap style -->
-    <link rel="stylesheet" href="./static/main.css">                                   <!-- Templatemo style -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="./static/font-awesome-4.7.0/css/font-awesome.min.css"> <!-- Font Awesome -->
+    <link rel="stylesheet" href="./static/bootstrap.min.css"> <!-- Bootstrap style -->
+    <link rel="stylesheet" href="./static/main.css"> <!-- Templatemo style -->
 
     <!--Leaflet library for heatmap-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -39,104 +41,107 @@
     </style> -->
 </head>
 
-    <body>
-        <div class="tm-main-content" id="top">
-            <!-- <div class="tm-top-bar-bg"></div> used for fixing the nav bar-->
-            <div class="tm-top-bar" id="tm-top-bar">
-                <!-- Top Navbar -->
-                <div class="container">
-                    <div class="row">
-                        <nav class="navbar">
-                            <a class="navbar-brand mr-auto" href="#">
-                                <!-- Image edited from: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.valamis.com%2Fcompany%2Fnews%2Fvalamis-operations-during-the-covid-19-coronavirus&psig=AOvVaw2snEKOY2GFlJ2xjz8Jf__N&ust=1619404195893000&source=images&cd=vfe&ved=0CA0QjhxqFwoTCKjI5_CsmPACFQAAAAAdAAAAABAD -->
-                                <img src="./static/logo.jpg" alt="Site logo">
-                                COVID Seach Engine
-                            </a>
-                            <!-- Adjust the height of tm-top-bar if need more rows-->
-                            <p class="about">During times of pandemic, we should be able to make safe choices on which places to visit based on the computed risk levels. This application helps users in NYC to figure out whether a place they want to visit is safe enough. It also recommends locations based on their customized search that takes minimum rating and distance into consideration.</p>   
-                        </nav> 
-                    </div>
+<body>
+    <div class="tm-main-content" id="top">
+        <!-- <div class="tm-top-bar-bg"></div> used for fixing the nav bar-->
+        <div class="tm-top-bar" id="tm-top-bar">
+            <!-- Top Navbar -->
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar">
+                        <a class="navbar-brand mr-auto" href="#">
+                            <!-- Image edited from: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.valamis.com%2Fcompany%2Fnews%2Fvalamis-operations-during-the-covid-19-coronavirus&psig=AOvVaw2snEKOY2GFlJ2xjz8Jf__N&ust=1619404195893000&source=images&cd=vfe&ved=0CA0QjhxqFwoTCKjI5_CsmPACFQAAAAAdAAAAABAD -->
+                            <img src="./static/logo.jpg" alt="Site logo">
+                            COVID Seach Engine
+                        </a>
+                        <!-- Adjust the height of tm-top-bar if need more rows-->
+                        <p class="about">During times of pandemic, we should be able to make safe choices on which
+                            places to visit based on the computed risk levels. This application helps users in NYC to
+                            figure out whether a place they want to visit is safe enough. It also recommends locations
+                            based on their customized search that takes minimum rating and distance into consideration.
+                        </p>
+                    </nav>
                 </div>
             </div>
-            <div class="tm-section tm-bg-img" id="tm-section-1">
-                <div class="tm-bg-transparent ie-container-width-fix-2">
-                    <div class="container ie-h-align-center-fix">
-                        <div class="row">
-                            <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
-                                <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
-                                    <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please fill in the fields of either one and hit search. Hover over the icons for more instructions.</p>
-                                </div>                                
-                                <form action="#" method="get" class="tm-search-form tm-section-pad-2" style="padding-bottom: 0;">
-                                    <!-- <input type="hidden" name="search_option" value="exact_address"> -->
-                                    <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
-                                        <div class="separator">Option 1: Exact Address Search</div>
-                                        <p class="tm-lh-0 text-center">Enter an exact address and we will provide the most recommended locations of your interests nearby</p>
-                                    </div>
-                                    <div class="form-row tm-search-form-row">
-                                        <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100" style="height: 100%">
-                                            <div class="tooltipDiv tooltiptop">
-                                                <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
-                                                <span class="tooltiptext icon-tooltip">Enter your location of interest. (e.g., “20 W 34th St” or “20 W 34th St, New York, NY 10001”)</span>
-                                            </div>
-                                            <input name="search_loc" type="text" class="form-control" id="search_loc" placeholder="Address">
+        </div>
+        <div class="tm-section tm-bg-img" id="tm-section-1">
+            <div class="tm-bg-transparent ie-container-width-fix-2">
+                <div class="container ie-h-align-center-fix">
+                    <div class="row">
+                        <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
+                            <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
+                                <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please
+                                    fill in the fields of either one and hit search. Hover over the icons for more
+                                    instructions.</p>
+                            </div>
+                            <form action="#" method="get" class="tm-search-form tm-section-pad-2"
+                                style="padding-bottom: 0;">
+                                <!-- <input type="hidden" name="search_option" value="exact_address"> -->
+                                <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
+                                    <div class="separator">Option 1: Exact Address Search</div>
+                                    <p class="tm-lh-0 text-center">Enter an exact address and we will provide the most
+                                        recommended locations of your interests nearby</p>
+                                </div>
+                                <div class="form-row tm-search-form-row">
+                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100"
+                                        style="height: 100%">
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Enter your location of interest.
+                                                (e.g., “20 W 34th St” or “20 W 34th St, New York, NY 10001”)</span>
                                         </div>
-                                        <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100" id="search_cat_container" style="background-color: white;">
-                                            <i class="fa fa-cutlery fa-2x tm-form-element-icon"></i>
-                                            <select name="search_cat" class="js-multiple" multiple="multiple" style="width: 100%">
-                                                <option value="Restaurant">Restaurant</option>
-                                                <option value="Shopping Mall">Shopping Mall</option>
-                                            </select>
-                                            <script>
-                                                $(document).ready(function (){
-                                                    
+                                        <input name="search_loc" type="text" class="form-control" id="search_loc"
+                                            placeholder="Address">
+                                    </div>
+                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100"
+                                        id="search_cat_container" style="background-color: white;">
+                                        <i class="fa fa-cutlery fa-2x tm-form-element-icon"></i>
+                                        <select name="search_cat" class="js-multiple" multiple="multiple"
+                                            style="width: 100%">
+                                            <option value="Restaurant">Restaurant</option>
+                                            <option value="Shopping Mall">Shopping Mall</option>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function () {
 
-                                                })
-                                            </script>
-                                        </div>                                    
+
+                                            })
+                                        </script>
                                     </div>
-                                    <div class="form-row tm-search-form-row" id="selectize-row">
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <div class="tooltipDiv tooltiptop">
-                                                <i class="fa fa-car fa-2x tm-form-element-icon"></i>
-                                                <span class="tooltiptext icon-tooltip">Enter the search radius (in meters). Min radius is 100 m</span>
-                                            </div>
-                                            <input name="search_rad" type="number" class="form-control" id="search_rad" placeholder="Max Distance (optional)">
-                                        </div>    
-                                        <div class="form-group tm-form-element tm-form-element-100">                                           
-                                            <select name="search_rat" class="form-control tm-select" id="search_rat1">
-                                                <option value="">Min Rating (optional)</option>
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                            <div class="tooltipDiv tooltiptop">
-                                                <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
-                                                <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
-                                            </div>
+                                </div>
+                                <div class="form-row tm-search-form-row" id="selectize-row">
+                                    <div class="form-group tm-form-element tm-form-element-100">
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-car fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Enter the search radius (in meters).
+                                                Min radius is 100 m</span>
                                         </div>
-                                        <!-- <div class="form-group tm-form-element ">
+                                        <input name="search_rad" type="number" class="form-control" id="search_rad"
+                                            placeholder="Max Distance (optional)">
+                                    </div>
+                                    <!-- <div class="form-group tm-form-element ">
                                             <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
                                         </div> -->
-                                    </div>
+                                </div>
                                 <!-- </form>
                                 <form action="#" method="get" class="tm-search-form tm-section-pad-2"> -->
-                                    <!-- <input type="hidden" name="search_option" value="keyword"> -->
-                                    <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
-                                        <div class="separator">Option 2: Keyword Search</div>
-                                        <p class="tm-lh-0 text-center">Enter a keyword and we will provide you with the rankings of the location you are looking for</p>
-                                    </div>
-                                    <div class="form-row tm-search-form-row">
-                                        <div class="form-group tm-form-element tm-form-element-100">
-                                            <div class="tooltipDiv tooltiptop">
-                                                <i class="fa fa-star fa-2x tm-form-element-icon"></i>
-                                                <span class="tooltiptext icon-tooltip">Enter your keyword of interest (e.g., "McDonald's")</span>
-                                            </div>
-                                            <input name="search_key" type="text" class="form-control" id="search_key" placeholder="Keyword">
+                                <!-- <input type="hidden" name="search_option" value="keyword"> -->
+                                <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
+                                    <div class="separator">Option 2: Keyword Search</div>
+                                    <p class="tm-lh-0 text-center">Enter a keyword and we will provide you with the
+                                        rankings of the location you are looking for</p>
+                                </div>
+                                <div class="form-row tm-search-form-row">
+                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 35%">
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-star fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Enter your keyword of interest (e.g.,
+                                                "McDonald's")</span>
                                         </div>
-                                        <!-- <div class="form-group tm-form-element tm-form-element-100">                                           
+                                        <input name="search_key" type="text" class="form-control" id="search_key"
+                                            placeholder="Keyword">
+                                    </div>
+                                    <!-- <div class="form-group tm-form-element tm-form-element-100">                                           
                                             <select name="search_rat" class="form-control tm-select" id="search_rat2">
                                                 <option value="">Min Rating (optional)</option>
                                                 <option value="0">0</option>
@@ -151,569 +156,624 @@
                                                 <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
                                             </div>
                                         </div> -->
-                                        <div class="form-group tm-form-element ">
-                                            <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
+                                </div>
+                                <div class="separator">Enter for EITHER option:</div>
+                                <div class="form-row tm-search-form-row">
+                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 15%">
+                                        <select name="search_rat" class="form-control tm-select" id="search_rat1">
+                                            <option value="">Min Rating (optional)</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Select the minimum rating of the
+                                                result</span>
                                         </div>
                                     </div>
-                                    
-                                      {% if error %}
-                                        <script>
-                                        alert("{{error}}");
-                                        </script>
-                                        {{error}}
-                                      {% endif %}
-                                      <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
-                                        <p class="tm-lh-0 text-center tm-margin-b-0 tm-color-primary" id="clear-input">Clear inputs</p>
-                                    </div>  
-                                </form> 
-                            </div>                        
-                        </div>      
-                    </div>
-                </div>                  
-            </div>
-            
-            <div class="tm-section-2" id="result-dest">
-                <div class="container">
-                    <div class="row">
-                        <div class="col text-center">
-                            <h2 class="tm-section-title" id='mapHeader'>Get COVID-19 Information with Our App</h2>
-                            <p class="tm-color-white tm-section-subtitle" id='mapText1'><i class="fa fa-compass" style="padding: 0 10px;"></i>Explore Low-Risk Neighborhoods on the Heatmap</p>
-                            <p class="tm-color-white tm-section-subtitle" id='mapText2'><i class="fa fa-file-code-o" style="padding: 0 10px;"></i>Learn Future Trends of COVID Cases in NYC</p>
-                            <div class="tooltipDiv-2">
-                                <p class="tm-color-white tm-section-subtitle" id='mapText3'><i class="fa fa-question" style="padding: 0 10px;"></i>How is NYC doing now? Hover over me</p>
-                                <span class="tooltiptext">The percentage of fully vaccinated population for all neighborhoods in NYC ranges from <b>14.2% to 59.7%</b>, with an average of <b>25.0%</b>. <br><br>
-                                The percentage of positive cases for all neighborhoods in NYC ranges from <b>1.3%</b> to <b>12.0%</b>, with an average of <b>5.7%</b>. <br><br>
-                                The number of fully vaccinated population for all neighborhoods in NYC ranges from <b>2</b> to <b>327</b>, with an average of <b>93</b>.
-                                </span>
-                            </div>
-                        </div>                
-                    </div>
-                </div>        
-            </div>
-            
-
-            
-            <div class="tm-section tm-section-pad tm-bg-img tm-position-relative" id="tm-section-6">
-                <!-- The svg element is part of the background of the previous section -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="tm-section-down-arrow">
-                    <polygon fill="#f07249" points="0,0  100,0  50,60"></polygon>                   
-                </svg>
-                <div class="container ie-h-align-center-fix">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"> 
-                            <p style="margin: 10px 10px">Select Parameter to Plot on the Heatmap</p>
-                            <div class="btn-group">
-                                <button class='heatmap-btn selected' value="people_positive">Positive Cases</button>
-                                <button class='heatmap-btn' value="%_full_vax">Fully Vaccinated</button>
-                                <button class='heatmap-btn' value="%_at_least_1">At Least One Dose</button>
-                            </div>       
-                            <div id="leaflet-map"></div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mt-md-0">
-                            <div class="tm-bg-white tm-p-4">
-                                <p style="margin-bottom: 0.5rem;"> It’s undeniable that the pandemic influences the population socially and studying its movement can help with citizen's judgement. This app employs machine learning (Bollinger Bands) to obtain volatility analysis on the trend and fluctuation of COVID data in NYC.</p>
-                                <p style="margin-bottom: 0;"><a href="https://github.com/nychealth/coronavirus-data" class="tm-color-primary tm-font-normal">Data</a> includes historical daily COVID cases for New York City up to the end of 05/03/21</p>
-                                <img src="./static/plot.jpg" alt="Case Prediction Based on Machine Learning" id="casePlot">
-                                <p style="margin-bottom: 0;">When the daily cases break out of the upper bound of the 20-day moving average(red signals), we expect it to continue the upward trend. When the number of cases breaks out of the lower bound of moving average(green signals), we expect the cases to decrease in the near future. For the most recent data (on the very right side), 4 consecutive green signals indicate case drops and a lower risk level for NYC.</p>
-                            </div>                            
-                        </div>
-                    </div>        
-                </div>
-            </div>
-            <!-- Variable in JS to store info -->
-            <script>
-                var resultLatLon = {}; 
-                var count = 0;
-                var exists = false;
-                var hasResults = false;
-            </script>
-            <!-- Search Results -->
-            <!-- Check length of data to make sure the results are not empty -->
-            {% if error=="" %}
-                <script>
-                    exists = true;
-                    location.href = "#";
-                    location.href = "#result-dest";
-                </script>
-                {% if data.name|length>0 %}  
-                    <script>
-                        hasResults = true;
-                        searchOption = '{{search_option}}'
-                    </script>          
-                    <div class="tm-section tm-position-relative">
-                        <div class="container tm-pb-4">
-                            <div class="text-center">
-                                <h2 id="resultHeader">Search Results</h2>
-                                <div class="tooltipDiv-2">
-                                    <p class="tm-color-black tm-section-subtitle" id='mapText3'><i class="fa fa-question" style="padding: 0 10px;"></i>How were our calculations made? Hover over me</p>
-                                    <span class="tooltiptext calc"><b>Price level</b> is computed as number of dollar signs ($):<br> 0 - free, 1 - inexpensive, 2 - moderate, 3 - expensive, 4 - very expensive<br><br>
-                                        <b>Positive cases</b> indicates the aggregated COVID-19 cases in the ZIP code area in the last 7 days <br><br>
-                                        <b>Risk score</b> is an integrated value of normalized percent positive cases and percent fully vaccinated populations. All risk scores of NYC neighborhoods are quantized into 5 levels, from "Lowest Risk" to "Highest Risk".<br><br><b>Lowest Risk</b> falls within the top 0-20% of the neighborhoods in NYC.<br><b>Lower Risk</b> falls within the top 20-40% of the neighborhoods in NYC.<br><b>Average Risk</b> falls within the top 40-60%.<br><b>Higher Risk</b> falls within the top 60-80%.<br><b>Highest Risk</b> falls within the top 80-100%.<br><br>
-                                        <b>Note:</b> for results across multiple neighborhoods, it will be assigned with mean values of COVID data in the NYC by default.
+                                    <div class="form-group tm-form-element ">
+                                        <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
+                                    </div>
+                                    <span class="clearfix pl-2 pr-2 tm-fx-col-xs"> 
+                                        <p class="tm-lh-0 text-center tm-margin-b-0 tm-color-primary" id="clear-input">
+                                            Clear inputs
+                                        </p>
                                     </span>
                                 </div>
-                                {% for d in data.name %}
-                                <!-- Get location and info in JS -->
+                            <p style="text-align: center; color: red; font-weight: 600;">
+                                {% if error %}
                                 <script>
-                                    count += 1;
-                                    resultLatLon[count] = {
-                                        'lat': '{{data.geolocation[d][0]}}',
-                                        'lon': '{{data.geolocation[d][1]}}',
-                                        'name': '{{data.name[d]}}',
-                                        '%_full_vax': "{{'%0.1f'| format(100*data.full_vax[d]|float)}}%",
-                                        'people_positive': '{{data.positive_cases[d]}}',
-                                        'risk_level': '{{data.risk_level[d]}}',
-                                        'types': '{% if data.types[d] %}, {% for type in data.types[d] %}{{type}}, {% endfor %}, {% endif %}',
-                                        'price_level': "$".repeat(Number('{{data.price_level[d]}}')),
-                                    };                               
+                                    alert("{{error}}");
                                 </script>
-                                <article class="col-sm-12 col-md-8 col-lg-8 col-xl-8 tm-article">                            
-                                    <div class="collapsible">
-                                        <!-- <i class="fa tm-fa-6x fa-legal tm-color-primary tm-margin-b-20"></i> -->
-                                        <h3 class="tm-color-primary tm-article-title-1">{{data.name[d]}}</h3>
-                                        <span>{{data.rating[d]}}/5
-                                            <div class="star-ratings-css"><span id="starRating"></span>
-                                                <div class="star-ratings-css-top" id="star-ratings-css-top-{{d}}"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                                <div class="star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                                            </div>
-                                            <script>
-                                                document.getElementById('star-ratings-css-top-{{d}}').style.width="{{data.rating[d]}}"*35+'px';
-                                            </script>
-                                        </span>
-                                        {% if data.types[d] and data.price_level[d] %}
-                                        <p style="color: #989898">
-                                            <span class='less-pad' id='price-{{d}}'>
-                                                <script>
-                                                    document.getElementById('price-{{d}}').innerHTML = "$".repeat(Number('{{data.price_level[d]}}'))
-                                                </script>
-                                            </span> •
-                                            {% if data.types[d] %}
-                                                {% for type in data.types[d] %}
-                                                    <span class='less-pad'>{{type}},</span>
-                                                {% endfor %}
-                                            {% endif %}
-                                        </p>
-                                        {% endif %}
-                                        <p>
-                                            <span>{{data.address[d]}}, {{data.zip_code[d]}}</span>
-                                            {% if data.duration[d] %}
-                                                <span style="color: #989898">{{data.duration[d]}} away</span>
-                                            {% endif %}
-                                            <!-- <span>Google Rating: {{data.rating[d]}}/5</span> -->
-                                        </p>
-                                        <div class="separator">COVID-19 Data in [Neighborhood Name]</div>
-                                        <p>
-                                            <span><span class="tm-font-semibold">Positive Cases:</span> {{data.positive_cases[d]}}</span>
-                                            <span><span class="tm-font-semibold">Fully Vaccinated:</span> {{'%0.1f'| format(100*data.full_vax[d]|float)}}%</span>
-                                            <span class="tm-font-semibold">Risk Level:</span> 
-                                            <span class="text-uppercase risk-color less-pad tm-font-semibold"> {{data.risk_level[d]}} </span>
-                                        </p>
-                                        <p class="collapsible-msg text-uppercase" style="color: #fd7e14; font-weight: 550;">CLICK TO SEE REVIEWS</p>
-                                    </div>
-                                    <div class="collapsible-content">
-                                    <hr style="width: 50%;">
-                                    {% for review in data.reviews[d] %}
-                                        {% for user, content in review.items() %}
-                                        <p><span style="font-weight: 600">{{user}}:</span> "{{content}}"</p>
-                                        {% endfor %}
-                                    {% endfor %}
-                                    </div> 
-                                </article>
-                                {% endfor %}
-                            </div>        
+                                {{error}}
+                                {% endif %}
+                            </p>
                         </div>
+                        </form>
                     </div>
-                {% endif %}
-            {% endif %}
-            
-            <footer class="tm-bg-dark-blue tm-section-pad-2 ">
-                <div class="container">
-                    <div class="row">
-                        <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">
-                        CS/INFO 4300 Class Project </p>
-                        <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Group Members: {{ netid }}</p>
-                        <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Template Adapted From: <a rel="nofollow" href="https://www.tooplate.com" class="tm-color-primary tm-font-normal" target="_parent">Tooplate</a></p>
-                        <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Image Source: <a href="https://unsplash.com/@jacobybrandon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="tm-color-primary tm-font-normal">Brandon Jacoby</a> on <a href="https://unsplash.com/s/photos/nyc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" class="tm-color-primary tm-font-normal">Unsplash</a></p>
-                    </div>
-                </div>                
-            </footer>
+                </div>
+            </div>
         </div>
-        
-        <!-- load JS files -->
-        <script src="./static/js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->       
-        <script src="./static/js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
-        <script src="./static/js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
-        <script src="https://d3js.org/d3.v5.min.js"></script>               <!-- D3 for handling data-->
-        <script>
-            // create map
-            var map = L.map('leaflet-map').setView([40.7128, -74.0060], 11);
+    </div>
 
-            const CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                subdomains: 'abcd'
-            }).addTo(map);
+    <div class="tm-section-2" id="result-dest">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="tm-section-title" id='mapHeader'>Get COVID-19 Information with Our App</h2>
+                    <p class="tm-color-white tm-section-subtitle" id='mapText1'><i class="fa fa-compass"
+                            style="padding: 0 10px;"></i>Explore Low-Risk Neighborhoods on the Heatmap</p>
+                    <p class="tm-color-white tm-section-subtitle" id='mapText2'><i class="fa fa-file-code-o"
+                            style="padding: 0 10px;"></i>Learn Future Trends of COVID Cases in NYC</p>
+                    <div class="tooltipDiv-2">
+                        <p class="tm-color-white tm-section-subtitle" id='mapText3'><i class="fa fa-question"
+                                style="padding: 0 10px;"></i>How is NYC doing now? Hover over me</p>
+                        <span class="tooltiptext">The percentage of fully vaccinated population for all neighborhoods in
+                            NYC ranges from <b>14.2% to 59.7%</b>, with an average of <b>25.0%</b>. <br><br>
+                            The percentage of positive cases for all neighborhoods in NYC ranges from <b>1.3%</b> to
+                            <b>12.0%</b>, with an average of <b>5.7%</b>. <br><br>
+                            The number of fully vaccinated population for all neighborhoods in NYC ranges from <b>2</b>
+                            to <b>327</b>, with an average of <b>93</b>.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            const requestData = async _ => {
 
-                // shape file
-                var shapeData = await d3.json('./static/shapeData.json');
-                var currParam = 'people_positive';
 
-                // color scale with max stats
-                // positive cases: [0, 327]
-                // 1 dose: [0.22, 0.76]
-                // 2 doses: [0.14, 0.6]
-                var posCaseScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 400]);
-                var vacScale = d3.scaleSequential(d3.interpolateBlues).domain([0, 1]);
-                var fullVacScale = d3.scaleSequential(d3.interpolateGreens).domain([0, 1]);
+    <div class="tm-section tm-section-pad tm-bg-img tm-position-relative" id="tm-section-6">
+        <!-- The svg element is part of the background of the previous section -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"
+            class="tm-section-down-arrow">
+            <polygon fill="#f07249" points="0,0  100,0  50,60"></polygon>
+        </svg>
+        <div class="container ie-h-align-center-fix">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <p style="margin: 10px 10px">Select Parameter to Plot on the Heatmap</p>
+                    <div class="btn-group">
+                        <button class='heatmap-btn selected' value="people_positive">Positive Cases</button>
+                        <button class='heatmap-btn' value="%_full_vax">Fully Vaccinated</button>
+                        <button class='heatmap-btn' value="%_at_least_1">At Least One Dose</button>
+                    </div>
+                    <div id="leaflet-map"></div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-3 mt-md-0">
+                    <div class="tm-bg-white tm-p-4">
+                        <p style="margin-bottom: 0.5rem;"> It’s undeniable that the pandemic influences the population
+                            socially and studying its movement can help with citizen's judgement. This app employs
+                            machine learning (Bollinger Bands) to obtain volatility analysis on the trend and
+                            fluctuation of COVID data in NYC.</p>
+                        <p style="margin-bottom: 0;"><a href="https://github.com/nychealth/coronavirus-data"
+                                class="tm-color-primary tm-font-normal">Data</a> includes historical daily COVID cases
+                            for New York City up to the end of 05/03/21</p>
+                        <img src="./static/plot.jpg" alt="Case Prediction Based on Machine Learning" id="casePlot">
+                        <p style="margin-bottom: 0;">When the daily cases break out of the upper bound of the 20-day
+                            moving average(red signals), we expect it to continue the upward trend. When the number of
+                            cases breaks out of the lower bound of moving average(green signals), we expect the cases to
+                            decrease in the near future. For the most recent data (on the very right side), 4
+                            consecutive green signals indicate case drops and a lower risk level for NYC.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Variable in JS to store info -->
+    <script>
+        var resultLatLon = {};
+        var count = 0;
+        var exists = false;
+        var hasResults = false;
+    </script>
+    <!-- Search Results -->
+    <!-- Check length of data to make sure the results are not empty -->
+    {% if error=="" %}
+    <script>
+        exists = true;
+        location.href = "#";
+        location.href = "#result-dest";
+    </script>
+    {% if data.name|length>0 %}
+    <script>
+        hasResults = true;
+        searchOption = '{{search_option}}'
+    </script>
+    <div class="tm-section tm-position-relative">
+        <div class="container tm-pb-4">
+            <div class="text-center">
+                <h2 id="resultHeader">Search Results</h2>
+                <div class="tooltipDiv-2">
+                    <p class="tm-color-black tm-section-subtitle" id='mapText3'><i class="fa fa-question"
+                            style="padding: 0 10px;"></i>How were our calculations made? Hover over me</p>
+                    <span class="tooltiptext calc"><b>Price level</b> is computed as number of dollar signs ($):<br> 0 -
+                        free, 1 - inexpensive, 2 - moderate, 3 - expensive, 4 - very expensive<br><br>
+                        <b>Positive cases</b> indicates the aggregated COVID-19 cases in the ZIP code area in the last 7
+                        days <br><br>
+                        <b>Risk score</b> is an integrated value of normalized percent positive cases and percent fully
+                        vaccinated populations. All risk scores of NYC neighborhoods are quantized into 5 levels, from
+                        "Lowest Risk" to "Highest Risk".<br><br><b>Lowest Risk</b> falls within the top 0-20% of the
+                        neighborhoods in NYC.<br><b>Lower Risk</b> falls within the top 20-40% of the neighborhoods in
+                        NYC.<br><b>Average Risk</b> falls within the top 40-60%.<br><b>Higher Risk</b> falls within the
+                        top 60-80%.<br><b>Highest Risk</b> falls within the top 80-100%.<br><br>
+                        <b>Note:</b> for results across multiple neighborhoods, it will be assigned with mean values of
+                        COVID data in the NYC by default.
+                    </span>
+                </div>
+                {% for d in data.name %}
+                <!-- Get location and info in JS -->
+                <script>
+                    count += 1;
+                    resultLatLon[count] = {
+                        'lat': '{{data.geolocation[d][0]}}',
+                        'lon': '{{data.geolocation[d][1]}}',
+                        'name': '{{data.name[d]}}',
+                        '%_full_vax': "{{'%0.1f'| format(100*data.full_vax[d]|float)}}%",
+                        'people_positive': '{{data.positive_cases[d]}}',
+                        'risk_level': '{{data.risk_level[d]}}',
+                        'types': '{% if data.types[d] %}, {% for type in data.types[d] %}{{type}}, {% endfor %}, {% endif %}',
+                        'price_level': "$".repeat(Number('{{data.price_level[d]}}')),
+                    };                               
+                </script>
+                <article class="col-sm-12 col-md-8 col-lg-8 col-xl-8 tm-article">
+                    <div class="collapsible">
+                        <!-- <i class="fa tm-fa-6x fa-legal tm-color-primary tm-margin-b-20"></i> -->
+                        <h3 class="tm-color-primary tm-article-title-1">{{data.name[d]}}</h3>
+                        <span>{{data.rating[d]}}/5
+                            <div class="star-ratings-css"><span id="starRating"></span>
+                                <div class="star-ratings-css-top" id="star-ratings-css-top-{{d}}">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                                <div class="star-ratings-css-bottom">
+                                    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            </div>
+                            <script>
+                                document.getElementById('star-ratings-css-top-{{d}}').style.width = "{{data.rating[d]}}" * 35 + 'px';
+                            </script>
+                        </span>
+                        {% if data.types[d] and data.price_level[d] %}
+                        <p style="color: #989898">
+                            <span class='less-pad' id='price-{{d}}'>
+                                <script>
+                                    document.getElementById('price-{{d}}').innerHTML = "$".repeat(Number('{{data.price_level[d]}}'))
+                                </script>
+                            </span> •
+                            {% if data.types[d] %}
+                            {% for type in data.types[d] %}
+                            <span class='less-pad'>{{type}},</span>
+                            {% endfor %}
+                            {% endif %}
+                        </p>
+                        {% endif %}
+                        <p>
+                            <span>{{data.address[d]}}, {{data.zip_code[d]}}</span>
+                            {% if data.duration[d] %}
+                            <span style="color: #989898">{{data.duration[d]}} away</span>
+                            {% endif %}
+                            <!-- <span>Google Rating: {{data.rating[d]}}/5</span> -->
+                        </p>
+                        <div class="separator">COVID-19 Data in [Neighborhood Name]</div>
+                        <p>
+                            <span><span class="tm-font-semibold">Positive Cases:</span>
+                                {{data.positive_cases[d]}}</span>
+                            <span><span class="tm-font-semibold">Fully Vaccinated:</span> {{'%0.1f'|
+                                format(100*data.full_vax[d]|float)}}%</span>
+                            <span class="tm-font-semibold">Risk Level:</span>
+                            <span class="text-uppercase risk-color less-pad tm-font-semibold"> {{data.risk_level[d]}}
+                            </span>
+                        </p>
+                        <p class="collapsible-msg text-uppercase" style="color: #fd7e14; font-weight: 550;">CLICK TO SEE
+                            REVIEWS</p>
+                    </div>
+                    <div class="collapsible-content">
+                        <hr style="width: 50%;">
+                        {% for review in data.reviews[d] %}
+                        {% for user, content in review.items() %}
+                        <p><span style="font-weight: 600">{{user}}:</span> "{{content}}"</p>
+                        {% endfor %}
+                        {% endfor %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
 
-                function style(feature) {
-                    return {
-                        fillColor: posCaseScale(feature.properties[currParam]),
-                        weight: 2,
-                        opacity: 1,
-                        color: 'white',
-                        dashArray: '3',
-                        fillOpacity: 0.7
-                    };
-                }
+    <footer class="tm-bg-dark-blue tm-section-pad-2 ">
+        <div class="container">
+            <div class="row">
+                <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">
+                    CS/INFO 4300 Class Project </p>
+                <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Group Members: {{ netid }}</p>
+                <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Template Adapted From: <a
+                        rel="nofollow" href="https://www.tooplate.com" class="tm-color-primary tm-font-normal"
+                        target="_parent">Tooplate</a></p>
+                <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Image Source: <a
+                        href="https://unsplash.com/@jacobybrandon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                        class="tm-color-primary tm-font-normal">Brandon Jacoby</a> on <a
+                        href="https://unsplash.com/s/photos/nyc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+                        class="tm-color-primary tm-font-normal">Unsplash</a></p>
+            </div>
+        </div>
+    </footer>
+    </div>
 
-                // add shape file to map
-                geoJsonLayer = L.geoJson(shapeData, {style: style}).addTo(map);
+    <!-- load JS files -->
+    <script src="./static/js/popper.min.js"></script> <!-- https://popper.js.org/ -->
+    <script src="./static/js/bootstrap.min.js"></script> <!-- https://getbootstrap.com/ -->
+    <script src="./static/js/jquery.singlePageNav.min.js"></script>
+    <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+    <script src="https://d3js.org/d3.v5.min.js"></script> <!-- D3 for handling data-->
+    <script>
+        // create map
+        var map = L.map('leaflet-map').setView([40.7128, -74.0060], 11);
 
-                // add color legend
-                // first need to convert the colors in rgb into hex
-                function rgbToHex(rgb){
-                    rgb = rgb.substr(4).split(")")[0].split(', ');
-                    var r = (+rgb[0]).toString(16)
-                    var g = (+rgb[1]).toString(16)
-                    var b = (+rgb[2]).toString(16)
-                    if (r.length == 1)
-                        r = "0" + r;
-                    if (g.length == 1)
-                        g = "0" + g;
-                    if (b.length == 1)
-                        b = "0" + b;
-                    return "#" + r + g + b;
-                }
+        const CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd'
+        }).addTo(map);
 
-                // Legned is mostly static. So we can create 3 legends and switch when needed.
-                var posCaseLegend = L.control({position: 'bottomleft'});
-                posCaseLegend.onAdd = function (map) {
-                    var div = L.DomUtil.create('div', 'legend'),
-                        grades = [0, 100, 200, 300, 400],
-                        labels = ['0-100', '100-200', '200-300', '300-400', '400'];
+        const requestData = async _ => {
 
-                    for (var i = 0; i < grades.length; i++) {
-                        div.innerHTML +=
-                            '<i style="background:' + rgbToHex(posCaseScale(grades[i]).toString()) + '"></i> ' +
-                            labels[i] + (labels[i+1] ?  '<br>' : '+');
-                    }
+            // shape file
+            var shapeData = await d3.json('./static/shapeData.json');
+            var currParam = 'people_positive';
 
-                    return div;
+            // color scale with max stats
+            // positive cases: [0, 327]
+            // 1 dose: [0.22, 0.76]
+            // 2 doses: [0.14, 0.6]
+            var posCaseScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 400]);
+            var vacScale = d3.scaleSequential(d3.interpolateBlues).domain([0, 1]);
+            var fullVacScale = d3.scaleSequential(d3.interpolateGreens).domain([0, 1]);
+
+            function style(feature) {
+                return {
+                    fillColor: posCaseScale(feature.properties[currParam]),
+                    weight: 2,
+                    opacity: 1,
+                    color: 'white',
+                    dashArray: '3',
+                    fillOpacity: 0.7
                 };
-
-                posCaseLegend.addTo(map);
-
-                var vacLegend = L.control({position: 'bottomleft'});
-                vacLegend.onAdd = function (map) {
-                    var div = L.DomUtil.create('div', 'legend'),
-                        grades = [0, 0.2, 0.4, 0.6, 0.8],
-                        labels = ['0-20%', '20-40%', '40-60%', '60-80%', '80%'];
-
-                    for (var i = 0; i < grades.length; i++) {
-                        div.innerHTML +=
-                            '<i style="background:' + rgbToHex(vacScale(grades[i]).toString()) + '"></i> ' +
-                            labels[i] + (labels[i+1] ?  '<br>' : '+');
-                    }
-
-                    return div;
-                };
-
-                var fullVacLegend = L.control({position: 'bottomleft'});
-                fullVacLegend.onAdd = function (map) {
-                    var div = L.DomUtil.create('div', 'legend'),
-                        grades = [0, 0.2, 0.4, 0.6, 0.8],
-                        labels = ['0-20%', '20-40%', '40-60%', '60-80%', '80%'];
-
-                    for (var i = 0; i < grades.length; i++) {
-                        div.innerHTML +=
-                            '<i style="background:' + rgbToHex(fullVacScale(grades[i]).toString()) + '"></i> ' +
-                            labels[i] + (labels[i+1] ?  '<br>' : '+');
-                    }
-
-                    return div;
-                };
-
-                // add info header
-                // TODO: Add info of hovered region if needed
-                var infoHeader = L.control();
-
-                infoHeader.onAdd = function (map) {
-                    this._div = L.DomUtil.create('div', 'info'); 
-                    this._div.innerHTML = '<h4>Positive Test Cases Over the Last Week</h4>';
-                    if (hasResults){
-                        this._div.innerHTML += 'Hover over a marker to see more info'
-                    }
-                    return this._div;
-                };
-
-                infoHeader.update = function (data) {
-                    if (currParam == "people_positive"){ this._div.innerHTML = '<h4>Positive Test Cases Over the Last Week</h4>'; }
-                    else if (currParam == "%_at_least_1"){ this._div.innerHTML = '<h4>Percentage of At Lease One Dose of Vaccination</h4>'; }
-                    else { this._div.innerHTML = '<h4>Percentage of Fully Vaccinated</h4>'; }
-                    if (data){
-                        this._div.innerHTML += 'Positive Cases Nearby: '+ data['people_positive'] + '<br>' + 'Percentage Vaccinated: ' + data['%_full_vax'] + '<br>' +
-                        'Risk Level: ' + data['risk_level']
-                    }
-                    else if (hasResults){
-                        this._div.innerHTML += 'Hover over a marker to see more info'
-                    }
-                };
-
-                infoHeader.addTo(map);
-
-                // Populate results on map
-                var markers = L.layerGroup();
-                // get customized icon color
-                var icon = new L.Icon({
-                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-                    iconSize: [25, 41],
-                    iconAnchor: [12, 41],
-                    popupAnchor: [1, -34],
-                    shadowSize: [41, 41]
-                });
-
-                if (hasResults){
-                    // clear layer
-                    markers.clearLayers();
-                    // loop backward to make top results on the front
-                    for (var i = count; i > 0; i--){
-                        value = resultLatLon[i];
-                        var msg = "<b>" + (i).toString() + '. ' + value['name'] + "</b><br><i class='tm-color-grey'>" + value['types'] + value['price_level'] +'</i>';
-                        var marker = L.marker([Number(value['lat']), value['lon']], {icon:icon, riseOnHover: true}).bindPopup(msg).addTo(markers);
-                        marker.on('mouseover',function(ev) {
-                            ev.target.openPopup();
-                            infoHeader.update({
-                                'people_positive':value['people_positive'],
-                                '%_full_vax': value['%_full_vax'],
-                                'risk_level': value['risk_level']
-                            })
-                        });
-                        marker.on('mouseout', function(){
-                            infoHeader.update();
-                        })
-                        // set view according to the best result
-                        if (i === 1){
-                            map.setView([Number(value['lat']), value['lon']], 17);
-                            marker.setZIndexOffset(100);
-                        }
-                    }
-                    markers.addTo(map);
-                    
-                }
-
-                if (exists){
-                    // change headers
-                    console.log("second exists");
-                    if (document.getElementById('search_key').value != ''){
-                        document.getElementById('mapHeader').innerHTML = "Showing Results for "+ inputs['search_key'];
-                    }
-                    else{
-                        document.getElementById('mapHeader').innerHTML = "Showing "+ inputs['search_cat'] + "s" + " near " + inputs['search_loc'];
-                    }
-                    if (hasResults && count >= 3){
-                        document.getElementById('mapText1').innerHTML='<b>Explore results on the interactive map</b>'
-                    }
-                    else {
-                        document.getElementById('mapText1').innerHTML='<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
-                    }
-                    document.getElementById('mapText2').innerHTML='<b>Scroll Down to See the Ranked List</b>'
-                }
-
-                // UI Functions
-                var btns = document.getElementsByClassName('heatmap-btn');
-            
-                for (i=0; i < btns.length; i++){
-                    btns[i].addEventListener("click", function () {
-                        for (var j=0; j < btns.length; j++){
-                            btns[j].classList.remove("selected");
-                        }
-                        this.classList.toggle("selected");
-                        currParam = this.value;
-                        // update heatmap
-                        L.geoJson(shapeData, {style: style});
-                        var scale;
-                        var leg;
-                        if (currParam == "people_positive"){ 
-                            scale = posCaseScale; 
-                            leg = posCaseLegend;
-                        }
-                        else if (currParam == "%_at_least_1"){ 
-                            scale = vacScale; 
-                            leg = vacLegend;
-                        }
-                        else { 
-                            scale = fullVacScale; 
-                            leg = fullVacLegend;
-                        }
-                        geoJsonLayer.eachLayer(layer => {
-                            layer.setStyle({ fillColor: scale(layer["feature"]["properties"][currParam]) });
-                        });  
-                        // update header and legend
-                        infoHeader.update(); 
-                        posCaseLegend.remove();
-                        vacLegend.remove();
-                        fullVacLegend.remove();
-                        leg.addTo(map);                         
-                    });
-                }
             }
 
-            requestData();
+            // add shape file to map
+            geoJsonLayer = L.geoJson(shapeData, { style: style }).addTo(map);
 
-            function setPageNav(){
-                if($(window).width() > 991) {
-                    $('#tm-top-bar').singlePageNav({
-                        currentClass:'active',
-                        offset: 79
-                    });   
+            // add color legend
+            // first need to convert the colors in rgb into hex
+            function rgbToHex(rgb) {
+                rgb = rgb.substr(4).split(")")[0].split(', ');
+                var r = (+rgb[0]).toString(16)
+                var g = (+rgb[1]).toString(16)
+                var b = (+rgb[2]).toString(16)
+                if (r.length == 1)
+                    r = "0" + r;
+                if (g.length == 1)
+                    g = "0" + g;
+                if (b.length == 1)
+                    b = "0" + b;
+                return "#" + r + g + b;
+            }
+
+            // Legned is mostly static. So we can create 3 legends and switch when needed.
+            var posCaseLegend = L.control({ position: 'bottomleft' });
+            posCaseLegend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'legend'),
+                    grades = [0, 100, 200, 300, 400],
+                    labels = ['0-100', '100-200', '200-300', '300-400', '400'];
+
+                for (var i = 0; i < grades.length; i++) {
+                    div.innerHTML +=
+                        '<i style="background:' + rgbToHex(posCaseScale(grades[i]).toString()) + '"></i> ' +
+                        labels[i] + (labels[i + 1] ? '<br>' : '+');
+                }
+
+                return div;
+            };
+
+            posCaseLegend.addTo(map);
+
+            var vacLegend = L.control({ position: 'bottomleft' });
+            vacLegend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'legend'),
+                    grades = [0, 0.2, 0.4, 0.6, 0.8],
+                    labels = ['0-20%', '20-40%', '40-60%', '60-80%', '80%'];
+
+                for (var i = 0; i < grades.length; i++) {
+                    div.innerHTML +=
+                        '<i style="background:' + rgbToHex(vacScale(grades[i]).toString()) + '"></i> ' +
+                        labels[i] + (labels[i + 1] ? '<br>' : '+');
+                }
+
+                return div;
+            };
+
+            var fullVacLegend = L.control({ position: 'bottomleft' });
+            fullVacLegend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'legend'),
+                    grades = [0, 0.2, 0.4, 0.6, 0.8],
+                    labels = ['0-20%', '20-40%', '40-60%', '60-80%', '80%'];
+
+                for (var i = 0; i < grades.length; i++) {
+                    div.innerHTML +=
+                        '<i style="background:' + rgbToHex(fullVacScale(grades[i]).toString()) + '"></i> ' +
+                        labels[i] + (labels[i + 1] ? '<br>' : '+');
+                }
+
+                return div;
+            };
+
+            // add info header
+            // TODO: Add info of hovered region if needed
+            var infoHeader = L.control();
+
+            infoHeader.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this._div.innerHTML = '<h4>Positive Test Cases Over the Last Week</h4>';
+                if (hasResults) {
+                    this._div.innerHTML += 'Hover over a marker to see more info'
+                }
+                return this._div;
+            };
+
+            infoHeader.update = function (data) {
+                if (currParam == "people_positive") { this._div.innerHTML = '<h4>Positive Test Cases Over the Last Week</h4>'; }
+                else if (currParam == "%_at_least_1") { this._div.innerHTML = '<h4>Percentage of At Lease One Dose of Vaccination</h4>'; }
+                else { this._div.innerHTML = '<h4>Percentage of Fully Vaccinated</h4>'; }
+                if (data) {
+                    this._div.innerHTML += 'Positive Cases Nearby: ' + data['people_positive'] + '<br>' + 'Percentage Vaccinated: ' + data['%_full_vax'] + '<br>' +
+                        'Risk Level: ' + data['risk_level']
+                }
+                else if (hasResults) {
+                    this._div.innerHTML += 'Hover over a marker to see more info'
+                }
+            };
+
+            infoHeader.addTo(map);
+
+            // Populate results on map
+            var markers = L.layerGroup();
+            // get customized icon color
+            var icon = new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+
+            if (hasResults) {
+                // clear layer
+                markers.clearLayers();
+                // loop backward to make top results on the front
+                for (var i = count; i > 0; i--) {
+                    value = resultLatLon[i];
+                    var msg = "<b>" + (i).toString() + '. ' + value['name'] + "</b><br><i class='tm-color-grey'>" + value['types'] + value['price_level'] + '</i>';
+                    var marker = L.marker([Number(value['lat']), value['lon']], { icon: icon, riseOnHover: true }).bindPopup(msg).addTo(markers);
+                    marker.on('mouseover', function (ev) {
+                        ev.target.openPopup();
+                        infoHeader.update({
+                            'people_positive': value['people_positive'],
+                            '%_full_vax': value['%_full_vax'],
+                            'risk_level': value['risk_level']
+                        })
+                    });
+                    marker.on('mouseout', function () {
+                        infoHeader.update();
+                    })
+                    // set view according to the best result
+                    if (i === 1) {
+                        map.setView([Number(value['lat']), value['lon']], 17);
+                        marker.setZIndexOffset(100);
+                    }
+                }
+                markers.addTo(map);
+
+            }
+
+            // if (exists) {
+            //     // change headers
+            //     console.log("second exists");
+            //     if (document.getElementById('search_key').value != '') {
+            //         document.getElementById('mapHeader').innerHTML = "Showing Results for " + inputs['search_key'];
+            //     }
+            //     else {
+            //         document.getElementById('mapHeader').innerHTML = "Showing " + inputs['search_cat'] + "s" + " near " + inputs['search_loc'];
+            //     }
+            //     if (hasResults && count >= 3) {
+            //         document.getElementById('mapText1').innerHTML = '<b>Explore results on the interactive map</b>'
+            //     }
+            //     else {
+            //         document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
+            //     }
+            //     document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
+            // }
+
+            // UI Functions
+            var btns = document.getElementsByClassName('heatmap-btn');
+
+            for (i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    for (var j = 0; j < btns.length; j++) {
+                        btns[j].classList.remove("selected");
+                    }
+                    this.classList.toggle("selected");
+                    currParam = this.value;
+                    // update heatmap
+                    L.geoJson(shapeData, { style: style });
+                    var scale;
+                    var leg;
+                    if (currParam == "people_positive") {
+                        scale = posCaseScale;
+                        leg = posCaseLegend;
+                    }
+                    else if (currParam == "%_at_least_1") {
+                        scale = vacScale;
+                        leg = vacLegend;
+                    }
+                    else {
+                        scale = fullVacScale;
+                        leg = fullVacLegend;
+                    }
+                    geoJsonLayer.eachLayer(layer => {
+                        layer.setStyle({ fillColor: scale(layer["feature"]["properties"][currParam]) });
+                    });
+                    // update header and legend
+                    infoHeader.update();
+                    posCaseLegend.remove();
+                    vacLegend.remove();
+                    fullVacLegend.remove();
+                    leg.addTo(map);
+                });
+            }
+        }
+
+        requestData();
+
+        function setPageNav() {
+            if ($(window).width() > 991) {
+                $('#tm-top-bar').singlePageNav({
+                    currentClass: 'active',
+                    offset: 79
+                });
+            }
+            else {
+                $('#tm-top-bar').singlePageNav({
+                    currentClass: 'active',
+                    offset: 65
+                });
+            }
+        }
+
+
+        $(document).ready(function () {
+
+            $multiSelect = $(".js-multiple").select2({
+                placeholder: 'Enter categorie(s), separating by comma',
+                tags: true,
+                tokenSeparators: [','],
+                // selectOnClose: true,
+                theme: "classic"
+            });
+
+            // Fill inputs with url
+            const urlParams = new URLSearchParams(window.location.search);
+            const inputs = {
+                'search_loc': urlParams.get('search_loc'),
+                'search_cat': urlParams.getAll('search_cat'),
+                'search_rad': urlParams.get('search_rad'),
+                'search_rat': urlParams.get('search_rat'),
+                'search_key': urlParams.get('search_key'),
+            };
+            console.log(inputs['search_cat'])
+            if (document.getElementById('search_key').value == '') {
+                document.getElementById('search_loc').value = inputs['search_loc'];
+                document.getElementById('search_rat1').value = inputs['search_rat']
+            }
+            if (inputs['search_cat']) {
+                inputs['search_cat'].forEach(function (item, index) {
+                    if ($multiSelect.find("option[value='" + item + "']").length) {
+                        $multiSelect.val(item).trigger('change');
+                    } else {
+                        // Create a DOM Option and pre-select by default
+                        var newOption = new Option(item, item, true, true);
+                        // Append it to the select
+                        $multiSelect.append(newOption).trigger('change');
+                    }
+                });
+            }
+
+            if (inputs['search_rad']) { document.getElementById('search_rad').value = inputs['search_rad']; }
+            if (document.getElementById('search_loc').value == '') {
+                document.getElementById('search_key').value = inputs['search_key'];
+            }
+
+            var clearBtn = document.getElementById("clear-input");
+            clearBtn.onclick = function () {
+                document.getElementById('search_loc').value = '';
+                document.getElementById('search_rat1').value = '';
+                // document.getElementById('search_cat').value = '';
+                document.getElementById('search_rad').value = '';
+                document.getElementById('search_key').value = '';
+                // document.getElementById('search_rat2').value = '';
+                $multiSelect.val(null).trigger("change");
+            }
+
+            if (exists) {
+                // change headers
+                if (document.getElementById('search_key').value != '') {
+                    document.getElementById('mapHeader').innerHTML = "Showing results for " + inputs['search_key'];
+                }
+                else if (document.getElementById('search_loc').value != '') {
+                    console.log("here?")
+                    document.getElementById('mapHeader').innerHTML = "Showing " + inputs['search_cat'] + "s near " + inputs['search_loc'];
+                }
+                if (hasResults && count >= 3) {
+                    document.getElementById('mapText1').innerHTML = '<b>Explore results on the interactive map</b>'
                 }
                 else {
-                    $('#tm-top-bar').singlePageNav({
-                        currentClass:'active',
-                        offset: 65
-                    });   
+                    document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
                 }
+                document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
             }
 
-       
-            $(document).ready(function(){
-
-                $multiSelect = $(".js-multiple").select2({
-                    placeholder: 'Enter categorie(s), separating by comma',
-                    tags: true,
-                    tokenSeparators: [','],
-                    // selectOnClose: true,
-                    theme: "classic"
-                });
-
-                // Fill inputs with url
-                const urlParams = new URLSearchParams(window.location.search);
-                const inputs = {
-                    'search_loc': urlParams.get('search_loc'),
-                    'search_cat': urlParams.getAll('search_cat'),
-                    'search_rad': urlParams.get('search_rad'),
-                    'search_rat': urlParams.get('search_rat'),
-                    'search_key': urlParams.get('search_key'),
-                };
-                console.log(inputs['search_cat'])
-                if (document.getElementById('search_key').value == '') {
-                    document.getElementById('search_loc').value = inputs['search_loc'];
-                    document.getElementById('search_rat1').value = inputs['search_rat']
-                }
-                if (inputs['search_cat']) {
-                    inputs['search_cat'].forEach(function (item, index) {
-                        if ($multiSelect.find("option[value='" + item + "']").length) {
-                            $multiSelect.val(item).trigger('change');
-                        } else { 
-                            // Create a DOM Option and pre-select by default
-                            var newOption = new Option(item, item, true, true);
-                            // Append it to the select
-                            $multiSelect.append(newOption).trigger('change');
-                        } 
-                    });
-                }
-
-                if (inputs['search_rad']) {document.getElementById('search_rad').value = inputs['search_rad'];}
-                if (document.getElementById('search_loc').value == '') {
-                    document.getElementById('search_key').value = inputs['search_key'];
-                }
-
-                var clearBtn = document.getElementById("clear-input");
-                clearBtn.onclick = function(){
-                    document.getElementById('search_loc').value = '';
-                    document.getElementById('search_rat1').value = '';
-                    // document.getElementById('search_cat').value = '';
-                    document.getElementById('search_rad').value = '';
-                    document.getElementById('search_key').value = '';
-                    // document.getElementById('search_rat2').value = '';
-                    $multiSelect.val(null).trigger("change");
-                }
-
-                console.log(exists);
-                console.log("hi");
-
-                if (exists){
-                    // change headers
-                    console.log("hi");
-                    console.log(document.getElementById('search_key'));
-                    if (document.getElementById('search_key').value != ''){
-                        console.log("here");
-                        document.getElementById('mapHeader').innerHTML = "Showing results for "+ inputs['search_key'];
-                    }
-                    else{
-                        console.log("here?")
-                        document.getElementById('mapHeader').innerHTML = "Showing "+ inputs['search_cat'] + "s near " + inputs['search_loc'];
-                    }
-                    if (hasResults && count >= 3){
-                        document.getElementById('mapText1').innerHTML='<b>Explore results on the interactive map</b>'
-                    }
-                    else {
-                        document.getElementById('mapText1').innerHTML='<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
-                    }
-                    document.getElementById('mapText2').innerHTML='<b>Scroll Down to See the Ranked List</b>'
-                }
-
-                $(window).on("scroll", function() {
-                    if($(window).scrollTop() > 100) {
-                        $(".tm-top-bar").addClass("active");
-                    } else {
-                        //remove the background property so it comes transparent again (defined in your css)
-                       $(".tm-top-bar").removeClass("active");
-                    }
-                });      
-                
-                setPageNav();
-
-                $(window).resize(function() {
-                  setPageNav();
-                });  
-
-                // dict of risks and colors
-                riskDict = {
-                    "LOWEST RISK": "#008000",
-                    "LOWER RISK": "#90ee90",
-                    "AVERAGE RISK": "#e5e619",
-                    "HIGHER RISK":"#FF8C00",
-                    "HIGHERST RISK": "#FF0000"
-                };
-
-                riskLevels = document.getElementsByClassName("risk-color");
-                for (i = 0; i < riskLevels.length; i++) {
-                    var currRisk = riskLevels[i].innerText;
-                    riskLevels[i].style.cssText += 'color:'+riskDict[currRisk];
+            $(window).on("scroll", function () {
+                if ($(window).scrollTop() > 100) {
+                    $(".tm-top-bar").addClass("active");
+                } else {
+                    //remove the background property so it comes transparent again (defined in your css)
+                    $(".tm-top-bar").removeClass("active");
                 }
             });
 
-            var coll = document.getElementsByClassName("collapsible");
-            var i;
+            setPageNav();
 
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function () {
-                    this.classList.toggle("expanded");
-                    var content = this.nextElementSibling;
-                    if (content.style.display === "block") {
-                        content.style.display = "none";
-                        this.getElementsByClassName('collapsible-msg')[0].innerHTML = "Click to see reviews";
-                    } else {
-                        content.style.display = "block";
-                        this.getElementsByClassName('collapsible-msg')[0].innerHTML = "Click to hide reviews";
-                    }
-                });
-                
+            $(window).resize(function () {
+                setPageNav();
+            });
+
+            // dict of risks and colors
+            riskDict = {
+                "LOWEST RISK": "#008000",
+                "LOWER RISK": "#90ee90",
+                "AVERAGE RISK": "#e5e619",
+                "HIGHER RISK": "#FF8C00",
+                "HIGHERST RISK": "#FF0000"
+            };
+
+            riskLevels = document.getElementsByClassName("risk-color");
+            for (i = 0; i < riskLevels.length; i++) {
+                var currRisk = riskLevels[i].innerText;
+                riskLevels[i].style.cssText += 'color:' + riskDict[currRisk];
             }
+        });
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("expanded");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                    this.getElementsByClassName('collapsible-msg')[0].innerHTML = "Click to see reviews";
+                } else {
+                    content.style.display = "block";
+                    this.getElementsByClassName('collapsible-msg')[0].innerHTML = "Click to hide reviews";
+                }
+            });
+
+        }
 
             // $(document).ready(function () {
             //     $('select#keywords').selectize({
@@ -727,7 +787,8 @@
             //     }
             // });
 
-        </script>             
+    </script>
 
 </body>
+
 </html>

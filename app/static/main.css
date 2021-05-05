@@ -716,6 +716,11 @@ footer a:hover{
 	color: #6e1b09;
 }
 
+#clear-input {
+	margin-top: 20%;
+	color: #0000FF;
+}
+
 @media screen and (max-width: 991px) {
 	.tm-top-bar.active, .tm-top-bar, .tm-top-bar-bg { height: 65px; }
 	.tm-top-bar.active .navbar-expand-lg .navbar-nav .nav-link,
