@@ -23,9 +23,10 @@ net_id = "Hogun Lee hl928, Sijin Li sl2624, Irena Gao ijg24, Doreen Gui dg497, E
 
 def get_results_exact_address(address, category_queries, radius):
     category_matches = match_category(category_queries)
-    results = pre_get_results_exact_address(address, category_matches[0], radius)
-    for category in category_matches[1:]:
-        results = results.append(pre_get_results_exact_address(address, category, radius))
+    results = pre_get_results_exact_address(address, category_matches[0][1], radius)
+    if len(category_matches) > 1:
+        for category in category_matches[1:][1]:
+            results = results.append(pre_get_results_exact_address(address, category, radius))
     results.drop_duplicates(subset=["geolocation"], inplace=True)
     results_with_sim = merge_postings(results, [cat[1] for cat in category_matches])
     return results_with_sim
@@ -194,7 +195,8 @@ def search():
             error += "Examples include 'museum','movie theater','bar','restaurant','shopping mall','gym' and so on."
         except:
             error = "There is an error with your query."
-    print(data)
+    if int(query_rad) <= 100 and data == []:
+        error = "No results, try expanding your radius!"
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, search_option=search_option, error=error)
 

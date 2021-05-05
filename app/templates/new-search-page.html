@@ -119,7 +119,7 @@
                                                 Min radius is 100 m</span>
                                         </div>
                                         <input name="search_rad" type="number" class="form-control" id="search_rad"
-                                            placeholder="Max Distance (optional)">
+                                            placeholder="Max Distance (in m, optional)">
                                     </div>
                                     <!-- <div class="form-group tm-form-element ">
                                             <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
@@ -280,7 +280,7 @@
         location.href = "#";
         location.href = "#result-dest";
     </script>
-    {% if not data.name %}
+    {% if not data.name and search_option != "" %}
         <p style="text-align: center; color: red; font-size: 25px">There are no results available! Try again with a different query.</p>
     {% endif %}
     {% if data.name|length>0 %}

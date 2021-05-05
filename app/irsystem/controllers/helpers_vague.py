@@ -269,8 +269,6 @@ def merge_postings(data, categories):
     sim_list = []
     for res in data.index:
         sim_score = 0
-        print("data types")
-        print(data["types"][res])
         if data["types"][res] != None:
             A = sorted(data["types"][res])
             B = sorted(categories)
