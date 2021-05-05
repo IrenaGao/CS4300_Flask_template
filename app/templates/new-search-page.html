@@ -52,7 +52,7 @@
                         <a class="navbar-brand mr-auto" href="#">
                             <!-- Image edited from: https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.valamis.com%2Fcompany%2Fnews%2Fvalamis-operations-during-the-covid-19-coronavirus&psig=AOvVaw2snEKOY2GFlJ2xjz8Jf__N&ust=1619404195893000&source=images&cd=vfe&ved=0CA0QjhxqFwoTCKjI5_CsmPACFQAAAAAdAAAAABAD -->
                             <img src="./static/logo.jpg" alt="Site logo">
-                            COVID Seach Engine
+                            COVID Search Engine
                         </a>
                         <!-- Adjust the height of tm-top-bar if need more rows-->
                         <p class="about">During times of pandemic, we should be able to make safe choices on which
@@ -272,11 +272,13 @@
     </script>
     <!-- Search Results -->
     <!-- Check length of data to make sure the results are not empty -->
-    {% if error=="" %}
     <script>
         exists = true;
         location.href = "#";
     </script>
+    {% if not data.name %}
+        <p style="text-align: center; color: red; font-size: 25px">There are no results available! Try again with a different query.</p>
+    {% endif %}
     {% if data.name|length>0 %}
     <script>
         hasResults = true;
@@ -383,7 +385,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
     {% endif %}
 
     <footer class="tm-bg-dark-blue tm-section-pad-2 ">
@@ -719,7 +720,7 @@
                     document.getElementById('mapText1').innerHTML = '<b>Explore results on the interactive map</b>'
                 }
                 else {
-                    document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
+                    // document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
                 }
                 document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
             }
