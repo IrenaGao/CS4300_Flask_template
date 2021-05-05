@@ -181,7 +181,7 @@
                                     </span>
                                 </div>
                                 {% if error %}
-                                <div class="tm-search-form-row form-row clearfix pl-2 pr-2 tm-fx-col-xs">
+                                <div class="tm-search-form-row clearfix pl-2 pr-2 tm-fx-col-xs">
                                     <p style="text-align: center; color: red; font-weight: 600;">
                                         <script>
                                             alert('{{ error|tojson }}');
@@ -282,6 +282,7 @@
         hasResults = true;
         location.href = "#result-dest";
         searchOption = '{{search_option}}'
+        // console.log('{{data|tojson}}')
     </script>
     <div class="tm-section tm-position-relative">
         <div class="container tm-pb-4">
@@ -315,8 +316,9 @@
                         '%_full_vax': "{{'%0.1f'| format(100*data.full_vax[d]|float)}}%",
                         'people_positive': '{{data.positive_cases[d]}}',
                         'risk_level': '{{data.risk_level[d]}}',
-                        'types': '{% if data.types[d] %}, {% for type in data.types[d] %}{{type}}, {% endfor %}, {% endif %}',
+                        'types': '{% if data.types[d] %} {% for type in data.types[d] %}{{type}}, {% endfor %} {% endif %}',
                         'price_level': "$".repeat(Number('{{data.price_level[d]}}')),
+                        'neighborhood': '{{data.neighborhood[d]}}'
                     };                               
                 </script>
                 <article class="col-sm-12 col-md-8 col-lg-8 col-xl-8 tm-article">
@@ -355,7 +357,7 @@
                             {% endif %}
                             <!-- <span>Google Rating: {{data.rating[d]}}/5</span> -->
                         </p>
-                        <div class="separator">COVID-19 Data in [Neighborhood Name]</div>
+                        <div class="separator">COVID-19 Data in {{data.neighborhood[d]}} Neighborhood</div>
                         <p>
                             <span><span class="tm-font-semibold">Positive Cases:</span>
                                 {{data.positive_cases[d]}}</span>
@@ -556,6 +558,7 @@
                 // loop backward to make top results on the front
                 for (var i = count; i > 0; i--) {
                     value = resultLatLon[i];
+                    console.log(value)
                     var msg = "<b>" + (i).toString() + '. ' + value['name'] + "</b><br><i class='tm-color-grey'>" + value['types'] + value['price_level'] + '</i>';
                     var marker = L.marker([Number(value['lat']), value['lon']], { icon: icon, riseOnHover: true }).bindPopup(msg).addTo(markers);
                     marker.on('mouseover', function (ev) {
@@ -709,7 +712,7 @@
                     document.getElementById('mapHeader').innerHTML = "Showing results for " + inputs['search_key'];
                 }
                 else if (document.getElementById('search_loc').value != '') {
-                    console.log("here?")
+                    // console.log("here?")
                     document.getElementById('mapHeader').innerHTML = "Showing " + inputs['search_cat'] + "s near " + inputs['search_loc'];
                 }
                 if (hasResults && count >= 3) {

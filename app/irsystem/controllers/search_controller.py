@@ -23,18 +23,18 @@ net_id = "Hogun Lee hl928, Sijin Li sl2624, Irena Gao ijg24, Doreen Gui dg497, E
 
 def get_results_exact_address(address, category_queries, radius):
     category_matches = match_category(category_queries)
-    results = pre_get_results_exact_address(address, category_matches[0], radius)
+    results = pre_get_results_exact_address(address, category_matches[0][1], radius)
     for category in category_matches[1:]:
-        results = results.append(pre_get_results_exact_address(address, category, radius))
+        results = results.append(pre_get_results_exact_address(address, category[1], radius))
     results.drop_duplicates(subset=["geolocation"], inplace=True)
     results_with_sim = merge_postings(results, [cat[1] for cat in category_matches])
     return results_with_sim
 
 def get_results_keyword(keyword, category_queries):
     category_matches = match_category(category_queries)
-    results = pre_get_results_keyword(keyword, category_matches[0])
+    results = pre_get_results_keyword(keyword, category_matches[0][1])
     for category in category_matches[1:]:
-        results = results.append(pre_get_results_keyword(keyword, category))
+        results = results.append(pre_get_results_keyword(keyword, category[1]))
     results.drop_duplicates(subset=["geolocation"], inplace=True)
     results_with_sim = merge_postings(results, [cat[1] for cat in category_matches])
     return results_with_sim
@@ -170,7 +170,7 @@ def search():
     elif request.args.get("search_loc") == "":
         query_loc = request.args.get('search_key')
         query_rat = request.args.get('search_rat')
-        query_cat = ['establishment']
+        query_cat = ['point_of_interest']
         query_rad = '3000'
         search_option = "keyword"
         if (not query_loc) or (query_loc==""):
@@ -189,8 +189,8 @@ def search():
         except categoryMismatch:
             error = "There is no match with the categories you entered, please enter at least one valid category."
             error += ' Examples include "museum","movie theater","bar","restaurant","shopping mall","gym" and so on.'
-    print(error)
-    print("error")
+    # print(error)
+    # print("error")
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, search_option=search_option, error=error)
 
