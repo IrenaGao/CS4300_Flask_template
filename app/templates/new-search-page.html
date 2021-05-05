@@ -70,9 +70,7 @@
                     <div class="row">
                         <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
                             <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
-                                <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Please
-                                    fill in the fields of either one and hit search. Hover over the icons for more
-                                    instructions.</p>
+                                <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Hover over the icons for more instructions.</p>
                             </div>
                             <form action="#" method="get" class="tm-search-form tm-section-pad-2"
                                 style="padding-bottom: 0;">
@@ -93,24 +91,7 @@
                                         <input name="search_loc" type="text" class="form-control" id="search_loc"
                                             placeholder="Address">
                                     </div>
-                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100"
-                                        id="search_cat_container" style="background-color: white;">
-                                        <i class="fa fa-cutlery fa-2x tm-form-element-icon"></i>
-                                        <select name="search_cat" class="js-multiple" multiple="multiple"
-                                            style="width: 100%">
-                                            <option value="Restaurant">Restaurant</option>
-                                            <option value="Shopping Mall">Shopping Mall</option>
-                                        </select>
-                                        <script>
-                                            $(document).ready(function () {
-
-
-                                            })
-                                        </script>
-                                    </div>
-                                </div>
-                                <div class="form-row tm-search-form-row" id="selectize-row">
-                                    <div class="form-group tm-form-element tm-form-element-100">
+                                    <div class="form-group tm-form-element tm-form-element-100 tm-form-element-3">
                                         <div class="tooltipDiv tooltiptop">
                                             <i class="fa fa-car fa-2x tm-form-element-icon"></i>
                                             <span class="tooltiptext icon-tooltip">Enter the search radius (in meters).
@@ -119,9 +100,23 @@
                                         <input name="search_rad" type="number" class="form-control" id="search_rad"
                                             placeholder="Max Distance (optional)">
                                     </div>
-                                    <!-- <div class="form-group tm-form-element ">
-                                            <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
-                                        </div> -->
+                                </div>
+                                <div class="form-row tm-search-form-row" id="selectize-row">
+                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100"
+                                        id="search_cat_container" style="background-color: white; margin-left: 25%;">
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-cutlery fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Enter the desired categories. We have provided you some example ones supported by our apps. </span>
+                                        </div>
+                                        <select name="search_cat" class="js-multiple" multiple="multiple"
+                                            style="width: 100%">
+                                            <optgroup label="Here are some example categories. You can also type your own">
+                                                <option value="bar">bar</option>
+                                                <option value="movie theater">movie theater</option>
+                                                <option value="restaurant">restaurant</option>
+                                            </optgroup>  
+                                        </select>
+                                    </div>
                                 </div>
                                 <!-- </form>
                                 <form action="#" method="get" class="tm-search-form tm-section-pad-2"> -->
@@ -132,7 +127,7 @@
                                         rankings of the location you are looking for</p>
                                 </div>
                                 <div class="form-row tm-search-form-row">
-                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 35%">
+                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100" style="margin-left: 25%">
                                         <div class="tooltipDiv tooltiptop">
                                             <i class="fa fa-star fa-2x tm-form-element-icon"></i>
                                             <span class="tooltiptext icon-tooltip">Enter your keyword of interest (e.g.,
@@ -141,27 +136,13 @@
                                         <input name="search_key" type="text" class="form-control" id="search_key"
                                             placeholder="Keyword">
                                     </div>
-                                    <!-- <div class="form-group tm-form-element tm-form-element-100">                                           
-                                            <select name="search_rat" class="form-control tm-select" id="search_rat2">
-                                                <option value="">Min Rating (optional)</option>
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                            <div class="tooltipDiv tooltiptop">
-                                                <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
-                                                <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
-                                            </div>
-                                        </div> -->
+                                    
                                 </div>
                                 <div class="separator">Enter for EITHER option:</div>
                                 <div class="form-row tm-search-form-row">
-                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 15%">
+                                    <!-- <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 15%">
                                         <select name="search_rat" class="form-control tm-select" id="search_rat1">
-                                            <option value="">Min Rating (optional)</option>
+                                            <option value="" disabled selected>Min Rating (optional)</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -174,6 +155,21 @@
                                             <span class="tooltiptext icon-tooltip">Select the minimum rating of the
                                                 result</span>
                                         </div>
+                                    </div> -->
+                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 15%">                                           
+                                        <select name="search_rat" class="form-control tm-select" id="search_rat1">
+                                            <option value="">Min Rating (optional)</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
+                                        </div>
                                     </div>
                                     <div class="form-group tm-form-element ">
                                         <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
@@ -184,14 +180,17 @@
                                         </p>
                                     </span>
                                 </div>
-                            <p style="text-align: center; color: red; font-weight: 600;">
                                 {% if error %}
-                                <script>
-                                    alert("{{error}}");
-                                </script>
-                                {{error}}
+                                <div class="tm-search-form-row form-row clearfix pl-2 pr-2 tm-fx-col-xs">
+                                    <p style="text-align: center; color: red; font-weight: 600;">
+                                        <script>
+                                            alert('{{ error|tojson }}');
+                                        </script>
+                                        {{error}}
+                                    </p>
+                                </div>
                                 {% endif %}
-                            </p>
+                            
                         </div>
                         </form>
                     </div>
@@ -277,11 +276,11 @@
     <script>
         exists = true;
         location.href = "#";
-        location.href = "#result-dest";
     </script>
     {% if data.name|length>0 %}
     <script>
         hasResults = true;
+        location.href = "#result-dest";
         searchOption = '{{search_option}}'
     </script>
     <div class="tm-section tm-position-relative">
@@ -658,7 +657,7 @@
         $(document).ready(function () {
 
             $multiSelect = $(".js-multiple").select2({
-                placeholder: 'Enter categorie(s), separating by comma',
+                placeholder: 'Categorie(s), separating by comma',
                 tags: true,
                 tokenSeparators: [','],
                 // selectOnClose: true,
@@ -674,11 +673,9 @@
                 'search_rat': urlParams.get('search_rat'),
                 'search_key': urlParams.get('search_key'),
             };
-            console.log(inputs['search_cat'])
-            if (document.getElementById('search_key').value == '') {
-                document.getElementById('search_loc').value = inputs['search_loc'];
-                document.getElementById('search_rat1').value = inputs['search_rat']
-            }
+            
+            if (inputs['search_loc']) {document.getElementById('search_loc').value = inputs['search_loc'];}
+            if (inputs['search_rat']){document.getElementById('search_rat1').value = inputs['search_rat'];}
             if (inputs['search_cat']) {
                 inputs['search_cat'].forEach(function (item, index) {
                     if ($multiSelect.find("option[value='" + item + "']").length) {
@@ -693,9 +690,7 @@
             }
 
             if (inputs['search_rad']) { document.getElementById('search_rad').value = inputs['search_rad']; }
-            if (document.getElementById('search_loc').value == '') {
-                document.getElementById('search_key').value = inputs['search_key'];
-            }
+            if (inputs['search_key']) { document.getElementById('search_key').value = inputs['search_key'];}
 
             var clearBtn = document.getElementById("clear-input");
             clearBtn.onclick = function () {

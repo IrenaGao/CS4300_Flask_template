@@ -145,7 +145,6 @@ def search():
     error = ""
     query_loc = ""
     data = []
-    search_option = ""
 
     # if search_option:
         # search exists
@@ -188,8 +187,8 @@ def search():
         try:
             data = get_covid_data(query_cat, search_option, query_loc, query_rad, query_rat)
         except categoryMismatch:
-            error = "There is no match with the categories you entered, please enter at least one valid category. \n"
-            error += "Examples include 'museum','movie theater','bar','restaurant','shopping mall','gym' and so on."
+            error = "There is no match with the categories you entered, please enter at least one valid category."
+            error += ' Examples include "museum","movie theater","bar","restaurant","shopping mall","gym" and so on.'
     print(error)
     print("error")
 
