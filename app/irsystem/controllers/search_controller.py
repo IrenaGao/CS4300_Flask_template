@@ -15,11 +15,7 @@ n_percent_positive = final_data['%_positive'] / final_data['%_positive'].max()
 
 # updated finaldata with normalization and risk levels computed
 final_data["n_risk"] = n_full_vax - n_percent_positive  # risk is % full vax - % positive
-<<<<<<< HEAD
-risk_labels_5 = ['Highest Risk', 'Higher Risk', 'Average risk', 'Lower Risk', 'Lowest Risk']
-=======
-risk_labels_5 = ['Very High Risk', 'High Risk', 'Medium Risk', 'Low Risk', 'Very Low Risk']
->>>>>>> ratings, updated backend
+risk_labels_5 = ['Highest Risk', 'Higher Risk', 'Average Risk', 'Lower Risk', 'Lowest Risk']
 final_data['risk_level'] = pd.qcut(final_data["n_risk"], q=[0, .2, .4, .6, .8, 1], labels=risk_labels_5)
 
 project_name = "COVID-19 Search Engine"
@@ -145,18 +141,14 @@ def get_covid_data(category, search_option, location, radius, min_rating):
 
 @irsystem.route('/', methods=['GET'])
 def search():
-<<<<<<< HEAD
-=======
     query_rad = request.args.get('search_rad')
     query_cat = request.args.getlist('search_cat')
     query_rat = request.args.get('search_rat')
     query_loc = ""
     search_option = ""
->>>>>>> ratings, updated backend
     error = ""
     data = []
     exists = False
-<<<<<<< HEAD
     search_option = request.args.get('search_option')
 
     if search_option:
@@ -191,6 +183,9 @@ def search():
                 query_rat = '0'
             if ((not query_rat.isnumeric()) or float(query_rat)>5 or float(query_rat)<0):
                 error = "Please enter a valid rating (integer between 0 and 5)"
+
+        elif request.args.get('search_key') != None and request.args.get('search_loc') != None:
+            error = "Only input a specific address (e.g. 20 W 34th St) OR a keyword (e.g. McDonalds)!"
         
         else:
             # search option modified by user
@@ -202,15 +197,7 @@ def search():
             data = get_covid_data(query_cat[0], search_option, query_loc, query_rad, query_rat)
     else:
         search_option = "index_page"
-=======
-    if request.args.get('search_loc') == "":
-        query_loc = request.args.get('search_key')
-        search_option="keyword"
-    elif request.args.get('search_key') == "":
-        query_loc = request.args.get('search_loc')
-        search_option="exact_address"
-    elif request.args.get('search_key') != None and request.args.get('search_loc') != None:
-        error = "Only input a specific address (e.g. 20 W 34th St) OR a keyword (e.g. McDonalds)!"
+
     if error == "" and query_loc != "":
         exists = True
         try:
@@ -218,7 +205,6 @@ def search():
         except categoryMismatch:
             error = "There is no match with the categories you entered, please enter at least one valid category. \n"
             error += "Examples include 'museum','movie theater','bar','restaurant','shopping mall','gym' and so on."
->>>>>>> ratings, updated backend
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, exists=exists, search_option=search_option, error=error)
 
