@@ -70,11 +70,7 @@
                     <div class="row">
                         <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
                             <div class="clearfix pl-2 pr-2 tm-fx-col-xs tm-section-pad-2">
-                                <p class="tm-lh-0 text-center tm-margin-b-0">
-                                    Our app provides two search options. Please
-                                    fill in the fields of either one and hit search. Hover over the icons for more
-                                    instructions.
-                                </p>
+                                <p class="tm-lh-0 text-center tm-margin-b-0">Our app provides two search options. Hover over the icons for more instructions.</p>
                             </div>
                             <form action="#" method="get" class="tm-search-form tm-section-pad-2"
                                 style="padding-bottom: 0;">
@@ -95,24 +91,7 @@
                                         <input name="search_loc" type="text" class="form-control" id="search_loc"
                                             placeholder="Address">
                                     </div>
-                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100"
-                                        id="search_cat_container" style="background-color: white;">
-                                        <i class="fa fa-cutlery fa-2x tm-form-element-icon"></i>
-                                        <select name="search_cat" class="js-multiple" multiple="multiple"
-                                            style="width: 100%">
-                                            <option value="Restaurant">Restaurant</option>
-                                            <option value="Shopping Mall">Shopping Mall</option>
-                                        </select>
-                                        <script>
-                                            $(document).ready(function () {
-
-
-                                            })
-                                        </script>
-                                    </div>
-                                </div>
-                                <div class="form-row tm-search-form-row" id="selectize-row">
-                                    <div class="form-group tm-form-element tm-form-element-100">
+                                    <div class="form-group tm-form-element tm-form-element-100 tm-form-element-3">
                                         <div class="tooltipDiv tooltiptop">
                                             <i class="fa fa-car fa-2x tm-form-element-icon"></i>
                                             <span class="tooltiptext icon-tooltip">Enter the search radius (in meters).
@@ -121,9 +100,23 @@
                                         <input name="search_rad" type="number" class="form-control" id="search_rad"
                                             placeholder="Max Distance (in m, optional)">
                                     </div>
-                                    <!-- <div class="form-group tm-form-element ">
-                                            <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
-                                        </div> -->
+                                </div>
+                                <div class="form-row tm-search-form-row" id="selectize-row">
+                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100"
+                                        id="search_cat_container" style="background-color: white; margin-left: 25%;">
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-cutlery fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Enter the desired categories. We have provided you some example ones supported by our apps. </span>
+                                        </div>
+                                        <select name="search_cat" class="js-multiple" multiple="multiple"
+                                            style="width: 100%">
+                                            <optgroup label="Here are some example categories. You can also type your own">
+                                                <option value="gym">gym</option>
+                                                <option value="movie theater">movie theater</option>
+                                                <option value="restaurant">restaurant</option>
+                                            </optgroup>  
+                                        </select>
+                                    </div>
                                 </div>
                                 <!-- </form>
                                 <form action="#" method="get" class="tm-search-form tm-section-pad-2"> -->
@@ -134,7 +127,7 @@
                                         rankings of the location you are looking for</p>
                                 </div>
                                 <div class="form-row tm-search-form-row">
-                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 35%">
+                                    <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100" style="margin-left: 25%">
                                         <div class="tooltipDiv tooltiptop">
                                             <i class="fa fa-star fa-2x tm-form-element-icon"></i>
                                             <span class="tooltiptext icon-tooltip">Enter your keyword of interest (e.g.,
@@ -143,27 +136,13 @@
                                         <input name="search_key" type="text" class="form-control" id="search_key"
                                             placeholder="Keyword">
                                     </div>
-                                    <!-- <div class="form-group tm-form-element tm-form-element-100">                                           
-                                            <select name="search_rat" class="form-control tm-select" id="search_rat2">
-                                                <option value="">Min Rating (optional)</option>
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                            <div class="tooltipDiv tooltiptop">
-                                                <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
-                                                <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
-                                            </div>
-                                        </div> -->
+                                    
                                 </div>
                                 <div class="separator">Enter for EITHER option:</div>
                                 <div class="form-row tm-search-form-row">
-                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 15%">
+                                    <!-- <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 15%">
                                         <select name="search_rat" class="form-control tm-select" id="search_rat1">
-                                            <option value="">Min Rating (optional)</option>
+                                            <option value="" disabled selected>Min Rating (optional)</option>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -176,6 +155,21 @@
                                             <span class="tooltiptext icon-tooltip">Select the minimum rating of the
                                                 result</span>
                                         </div>
+                                    </div> -->
+                                    <div class="form-group tm-form-element tm-form-element-100" style="margin-left: 15%">                                           
+                                        <select name="search_rat" class="form-control tm-select" id="search_rat1">
+                                            <option value="">Min Rating (optional)</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <div class="tooltipDiv tooltiptop">
+                                            <i class="fa fa-thumbs-up fa-2x tm-form-element-icon"></i>
+                                            <span class="tooltiptext icon-tooltip">Select the minimum rating of the result</span>
+                                        </div>
                                     </div>
                                     <div class="form-group tm-form-element ">
                                         <button type="submit" class="btn btn-primary tm-btn-search">Search</button>
@@ -186,14 +180,17 @@
                                         </p>
                                     </span>
                                 </div>
-                            <p style="text-align: center; color: red; font-weight: 600;">
                                 {% if error %}
-                                <script>
-                                    alert("{{error}}");
-                                </script>
-                                {{error}}
+                                <div class="tm-search-form-row clearfix pl-2 pr-2 tm-fx-col-xs">
+                                    <p style="text-align: center; color: red; font-weight: 600;">
+                                        <script>
+                                            alert('{{ error|tojson }}');
+                                        </script>
+                                        {{error}}
+                                    </p>
+                                </div>
                                 {% endif %}
-                            </p>
+                            
                         </div>
                         </form>
                     </div>
@@ -278,7 +275,6 @@
     <script>
         exists = true;
         location.href = "#";
-        location.href = "#result-dest";
     </script>
     {% if not data.name and search_option != "" %}
         <p style="text-align: center; color: red; font-size: 25px">There are no results available! Try again with a different query.</p>
@@ -286,7 +282,9 @@
     {% if data.name|length>0 %}
     <script>
         hasResults = true;
+        location.href = "#result-dest";
         searchOption = '{{search_option}}'
+        // console.log('{{data|tojson}}')
     </script>
     <div class="tm-section tm-position-relative">
         <div class="container tm-pb-4">
@@ -309,10 +307,15 @@
                         COVID data in the NYC by default.
                     </span>
                 </div>
+                <script>var typeList = [];</script>
                 {% for d in data.name %}
                 <!-- Get location and info in JS -->
                 <script>
                     count += 1;
+                    typeList = [];
+                    '{% if data.types[d] %} {% for type in data.types[d] %}'
+                        typeList.push('{{type}}'.replace(/_/g, " "));
+                    '{% endfor %} {% endif %}'
                     resultLatLon[count] = {
                         'lat': '{{data.geolocation[d][0]}}',
                         'lon': '{{data.geolocation[d][1]}}',
@@ -320,9 +323,10 @@
                         '%_full_vax': "{{'%0.1f'| format(100*data.full_vax[d]|float)}}%",
                         'people_positive': '{{data.positive_cases[d]}}',
                         'risk_level': '{{data.risk_level[d]}}',
-                        'types': '{% if data.types[d] %}, {% for type in data.types[d] %}{{type}}, {% endfor %}, {% endif %}',
+                        'types': typeList,
                         'price_level': "$".repeat(Number('{{data.price_level[d]}}')),
-                    };                               
+                        'neighborhood': '{{data.neighborhood[d]}}'
+                    };                         
                 </script>
                 <article class="col-sm-12 col-md-8 col-lg-8 col-xl-8 tm-article">
                     <div class="collapsible">
@@ -339,20 +343,30 @@
                                 document.getElementById('star-ratings-css-top-{{d}}').style.width = "{{data.rating[d]}}" * 35 + 'px';
                             </script>
                         </span>
-                        {% if data.types[d] and data.price_level[d] %}
                         <p style="color: #989898">
-                            <span class='less-pad' id='price-{{d}}'>
-                                <script>
-                                    document.getElementById('price-{{d}}').innerHTML = "$".repeat(Number('{{data.price_level[d]}}'))
-                                </script>
-                            </span> •
-                            {% if data.types[d] %}
-                            {% for type in data.types[d] %}
-                            <span class='less-pad'>{{type}},</span>
-                            {% endfor %}
-                            {% endif %}
-                        </p>
+                        {% if data.price_level[d] %}
+                        <span class='less-pad' id='price-{{d}}'></span>
+                        <script>
+                            document.getElementById('price-{{d}}').innerHTML = "$".repeat(Number('{{data.price_level[d]}}')) + " • "
+                        </script>
                         {% endif %}
+                        {% if data.types[d] %}
+                            <span class='less-pad' id='type-{{d}}'></span>
+                        {% endif %}  
+                        <script>
+                            typeList = [];
+                            msg = '';
+                            '{% if data.types[d] %}'
+                                '{% for type in data.types[d] %}'
+                                    typeList.push('{{type}}'.replace(/_/g, " "));
+                                '{% endfor %}'
+                            '{% endif %}'
+                            for (var j=0; j<typeList.length; j++){
+                                msg +=  typeList[j] + (typeList[j+1] ? ', ' : '.');
+                            }
+                            document.getElementById('type-{{d}}').innerHTML = msg;
+                        </script>
+                        </p>
                         <p>
                             <span>{{data.address[d]}}, {{data.zip_code[d]}}</span>
                             {% if data.duration[d] %}
@@ -360,7 +374,7 @@
                             {% endif %}
                             <!-- <span>Google Rating: {{data.rating[d]}}/5</span> -->
                         </p>
-                        <div class="separator" style="margin-top: 5%;">COVID-19 Data from {{data.neighborhood[d]}}</div>
+                        <div class="separator">COVID-19 Data in {{data.neighborhood[d]}} Neighborhood</div>
                         <p>
                             <span><span class="tm-font-semibold">Positive Cases:</span>
                                 {{data.positive_cases[d]}}</span>
@@ -432,7 +446,7 @@
             // positive cases: [0, 327]
             // 1 dose: [0.22, 0.76]
             // 2 doses: [0.14, 0.6]
-            var posCaseScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 400]);
+            var posCaseScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 200]);
             var vacScale = d3.scaleSequential(d3.interpolateBlues).domain([0, 1]);
             var fullVacScale = d3.scaleSequential(d3.interpolateGreens).domain([0, 1]);
 
@@ -470,8 +484,8 @@
             var posCaseLegend = L.control({ position: 'bottomleft' });
             posCaseLegend.onAdd = function (map) {
                 var div = L.DomUtil.create('div', 'legend'),
-                    grades = [0, 100, 200, 300, 400],
-                    labels = ['0-100', '100-200', '200-300', '300-400', '400'];
+                    grades = [0, 50, 100, 150, 200],
+                    labels = ['0-50', '50-100', '100-150', '150-200', '200'];
 
                 for (var i = 0; i < grades.length; i++) {
                     div.innerHTML +=
@@ -560,7 +574,11 @@
                 // loop backward to make top results on the front
                 for (var i = count; i > 0; i--) {
                     value = resultLatLon[i];
-                    var msg = "<b>" + (i).toString() + '. ' + value['name'] + "</b><br><i class='tm-color-grey'>" + value['types'] + value['price_level'] + '</i>';
+                    var msg = "<b>" + (i).toString() + '. ' + value['name'] + "</b><br><i class='tm-color-grey'>";
+                    for (var j=0; j<value['types'].length; j++){
+                        msg +=  value['types'][j] + (value['types'][j+1] ? ', ' : '');
+                    }
+                    msg += (value['price_level']) ?  (' • ' + value['price_level'] + '</i>') : '</i>';
                     var marker = L.marker([Number(value['lat']), value['lon']], { icon: icon, riseOnHover: true }).bindPopup(msg).addTo(markers);
                     marker.on('mouseover', function (ev) {
                         ev.target.openPopup();
@@ -661,7 +679,7 @@
         $(document).ready(function () {
 
             $multiSelect = $(".js-multiple").select2({
-                placeholder: 'Enter categorie(s), separating by comma',
+                placeholder: 'Categorie(s), separating by comma or enter',
                 tags: true,
                 tokenSeparators: [','],
                 // selectOnClose: true,
@@ -677,11 +695,9 @@
                 'search_rat': urlParams.get('search_rat'),
                 'search_key': urlParams.get('search_key'),
             };
-            console.log(inputs['search_cat'])
-            if (document.getElementById('search_key').value == '') {
-                document.getElementById('search_loc').value = inputs['search_loc'];
-                document.getElementById('search_rat1').value = inputs['search_rat']
-            }
+            
+            if (inputs['search_loc']) {document.getElementById('search_loc').value = inputs['search_loc'];}
+            if (inputs['search_rat']){document.getElementById('search_rat1').value = inputs['search_rat'];}
             if (inputs['search_cat']) {
                 inputs['search_cat'].forEach(function (item, index) {
                     if ($multiSelect.find("option[value='" + item + "']").length) {
@@ -696,9 +712,7 @@
             }
 
             if (inputs['search_rad']) { document.getElementById('search_rad').value = inputs['search_rad']; }
-            if (document.getElementById('search_loc').value == '') {
-                document.getElementById('search_key').value = inputs['search_key'];
-            }
+            if (inputs['search_key']) { document.getElementById('search_key').value = inputs['search_key'];}
 
             var clearBtn = document.getElementById("clear-input");
             clearBtn.onclick = function () {
@@ -717,7 +731,7 @@
                     document.getElementById('mapHeader').innerHTML = "Showing results for " + inputs['search_key'];
                 }
                 else if (document.getElementById('search_loc').value != '') {
-                    console.log("here?")
+                    // console.log("here?")
                     document.getElementById('mapHeader').innerHTML = "Showing " + inputs['search_cat'] + "s near " + inputs['search_loc'];
                 }
                 if (hasResults && count >= 3) {

@@ -33,9 +33,9 @@ def get_results_exact_address(address, category_queries, radius):
 
 def get_results_keyword(keyword, category_queries):
     category_matches = match_category(category_queries)
-    results = pre_get_results_keyword(keyword, category_matches[0])
+    results = pre_get_results_keyword(keyword, category_matches[0][1])
     for category in category_matches[1:]:
-        results = results.append(pre_get_results_keyword(keyword, category))
+        results = results.append(pre_get_results_keyword(keyword, category[1]))
     results.drop_duplicates(subset=["geolocation"], inplace=True)
     results_with_sim = merge_postings(results, [cat[1] for cat in category_matches])
     return results_with_sim
@@ -146,7 +146,6 @@ def search():
     error = ""
     query_loc = ""
     data = []
-    search_option = ""
 
     # if search_option:
         # search exists
@@ -174,7 +173,7 @@ def search():
     elif request.args.get("search_loc") == "":
         query_loc = request.args.get('search_key')
         query_rat = request.args.get('search_rat')
-        query_cat = ['establishment']
+        query_cat = ['point_of_interest']
         query_rad = '3000'
         search_option = "keyword"
         if (not query_loc) or (query_loc==""):
@@ -191,8 +190,9 @@ def search():
         try:
             data = get_covid_data(query_cat, search_option, query_loc, query_rad, query_rat)
         except categoryMismatch:
-            error = "There is no match with the categories you entered, please enter at least one valid category. \n"
-            error += "Examples include 'museum','movie theater','bar','restaurant','shopping mall','gym' and so on."
+            error = "There is no match with the categories you entered, please enter at least one valid category."
+            error += ' Examples include "museum","movie theater","bar","restaurant","shopping mall","gym" and so on.'
+           
         except:
             error = "There is an error with your query."
     if int(query_rad) <= 100 and data == []:

@@ -17,11 +17,11 @@ for d in covidList:
 columnDict = { 
     'lat': 0, 
     'lon': 1, 
-    'people_tested': 2, 
-    'people_positive': 3,
-    '%_positive': 4, 
-    '%_at_least_1': 5, 
-    '%_full_vax': 6
+    'people_tested': 3, 
+    'people_positive': 4,
+    '%_positive': 5, 
+    '%_at_least_1': 6, 
+    '%_full_vax': 7
 }
 columns = ['people_positive', '%_at_least_1', '%_full_vax']
 

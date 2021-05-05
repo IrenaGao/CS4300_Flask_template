@@ -84,12 +84,7 @@ a:focus {
 }
 
 .tm-section-pad { padding: 30px 50px; }
-.tm-section-pad-2 { 
-	padding-right: 40px;
-	padding-left: 40px;
-	padding-top: 30px; 
-	padding-bottom: 20px;
-}
+.tm-section-pad-2 { padding: 15px 40px; }
 .tm-article-pad { padding: 28px; }
 .tm-sidebar-pad { padding: 15px 20px; }
 .tm-sidebar-pad-2 { padding: 21px 20px; }
@@ -293,7 +288,7 @@ select.tm-select::-ms-expand { display: none; }
 .tm-search-form .tm-form-element { width: 33.3333%; }
 .tm-search-form .tm-form-element-2 { width: 25%; }
 .tm-search-form .tm-form-element-3 { width: 50%; }
-.tm-search-form-row { width: 900px; }
+.tm-search-form-row { width: 800px; }
 .tm-btn-search { width: 100%; }
 #search_cat_container { font-size: 0.8rem;}
 
@@ -718,13 +713,13 @@ footer a:hover{
 }
 
 #clear-input:hover{
-	color: #6e1b09;
+	color: #f07249;
 	cursor: pointer;
 }
 
 #clear-input {
 	margin-top: 20%;
-	color: #0000FF;
+	color: #5d5f5c;
 }
 
 @media screen and (max-width: 991px) {
