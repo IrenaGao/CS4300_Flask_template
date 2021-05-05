@@ -292,6 +292,23 @@ select.tm-select::-ms-expand { display: none; }
 .tm-btn-search { width: 100%; }
 #search_cat_container { font-size: 0.8rem;}
 
+.select2-container{
+	/* width: 100%;
+	height: 100%; */
+	padding: 0.5rem 0.75rem 0.25rem 45px;
+}
+
+
+.select2-dropdown,  .select2-container--default .select2-selection--single , 
+.select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--multiple .select2-selection__choice,  
+.select2-container--classic .select2-selection--multiple , .select2-container--classic .select2-selection--multiple,   .select2-dropdown, 
+.select2-container--default .select2-selection--single, .select2-container--default .select2-selection--multiple,  
+.select2-container--classic .select2-selection--single, 
+.select2-container--classic[dir="rtl"] .select2-selection--single .select2-selection__arrow , 
+.select2-container--classic .select2-selection--multiple  {
+    border: none !important;
+}
+
 /* https://css-tricks.com/creating-non-rectangular-headers/ */
 .tm-section-down-arrow {
   position: absolute;

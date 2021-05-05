@@ -24,12 +24,11 @@
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <!-- Selectize -->
-    <script type="text/javascript" src="../static/selectize.js"></script>
-    <link rel="stylesheet" type="text/css" href="../static/selectize.css" />
-    <script type="text/javascript" src="../static/script.js"></script>
+    <!-- Selectize2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -69,40 +68,35 @@
                                         <p class="tm-lh-0 text-center">Enter an exact address and we will provide the most recommended locations of your interests nearby</p>
                                     </div>
                                     <div class="form-row tm-search-form-row">
-                                        <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100">
+                                        <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100" style="height: 100%">
                                             <div class="tooltipDiv tooltiptop">
                                                 <i class="fa fa-map-marker fa-2x tm-form-element-icon"></i>
                                                 <span class="tooltiptext icon-tooltip">Enter your location of interest. (e.g., “20 W 34th St” or “20 W 34th St, New York, NY 10001”)</span>
                                             </div>
                                             <input name="search_loc" type="text" class="form-control" id="search_loc" placeholder="Address">
                                         </div>
-                                        <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100">
+                                        <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100" id="search_cat_container" style="background-color: white;">
+                                            <i class="fa fa-cutlery fa-2x tm-form-element-icon"></i>
+                                            <select name="search_cat" class="js-multiple" multiple="multiple" style="width: 100%">
+                                                <option value="Restaurant">Restaurant</option>
+                                                <option value="Shopping Mall">Shopping Mall</option>
+                                            </select>
+                                            <script>
+                                                $(document).ready(function (){
+                                                    
+
+                                                })
+                                            </script>
+                                        </div>                                    
+                                    </div>
+                                    <div class="form-row tm-search-form-row" id="selectize-row">
+                                        <div class="form-group tm-form-element tm-form-element-100">
                                             <div class="tooltipDiv tooltiptop">
                                                 <i class="fa fa-car fa-2x tm-form-element-icon"></i>
                                                 <span class="tooltiptext icon-tooltip">Enter the search radius (in meters). Min radius is 100 m</span>
                                             </div>
                                             <input name="search_rad" type="number" class="form-control" id="search_rad" placeholder="Max Distance (optional)">
-                                        </div>                                       
-                                    </div>
-                                    <div class="form-row tm-search-form-row" id="selectize-row">
-                                        <div class="form-group tm-form-element tm-form-element-100" id="search_cat_container">
-                                            <select placeholder="Categories" id="search_cat" name="search_cat">
-                                            </select> 
-                                            <script>
-                                                var selectize = $("select#search_cat").selectize({
-                                                    plugins: ["remove_button"],
-                                                    delimiter: ",",
-                                                    maxItems: 5,
-                                                    persist: false,
-                                                    create: function (input) {
-                                                    return {
-                                                        value: input,
-                                                        text: input,
-                                                    };
-                                                    },
-                                                });
-                                            </script>
-                                        </div> 
+                                        </div>    
                                         <div class="form-group tm-form-element tm-form-element-100">                                           
                                             <select name="search_rat" class="form-control tm-select" id="search_rat1">
                                                 <option value="">Min Rating (optional)</option>
@@ -166,27 +160,6 @@
                                         <p class="tm-lh-0 text-center tm-margin-b-0 tm-color-primary" id="clear-input">Clear inputs</p>
                                     </div>  
                                 </form> 
-                                <script>
-                                    // Fill inputs with url
-                                    const urlParams = new URLSearchParams(window.location.search);
-                                    const inputs = {
-                                        'search_loc': urlParams.get('search_loc'),
-                                        'search_cat': urlParams.get('search_cat'),
-                                        'search_rad': urlParams.get('search_rad'),
-                                        'search_rat': urlParams.get('search_rat'),
-                                        'search_key': urlParams.get('search_key'),
-                                    };
-                                    if ('{{search_option}}' == "exact_address") {
-                                        document.getElementById('search_loc').value = inputs['search_loc'];
-                                        document.getElementById('search_rat1').value = inputs['search_rat']
-                                    }
-                                    if (inputs['search_cat']) {document.getElementById('search_cat').value = inputs['search_cat'];}
-                                    if (inputs['search_rad']) {document.getElementById('search_rad').value = inputs['search_rad'];}
-                                    if ('{{search_option}}' == "keyword") {
-                                        document.getElementById('search_key').value = inputs['search_key'];
-                                        document.getElementById('search_rat2').value = inputs['search_rat']
-                                    }
-                                </script>
                             </div>                        
                         </div>      
                     </div>
@@ -354,7 +327,6 @@
         </div>
         
         <!-- load JS files -->
-        <script src="./static/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
         <script src="./static/js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->       
         <script src="./static/js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
         <script src="./static/js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
@@ -529,22 +501,6 @@
                     
                 }
 
-                if (exists){
-                    // change headers
-                    if (searchOption==="keyword"){
-                        document.getElementById('mapHeader').innerHTML = "Showing Results for "+ inputs['search_key'];
-                    }
-                    else{
-                        document.getElementById('mapHeader').innerHTML = "Showing "+ inputs['search_cat'] + " near " + inputs['search_loc'];
-                    }
-                    if (hasResults && count >= 3){
-                        document.getElementById('mapText1').innerHTML='<b>Explore results on the interactive map</b>'
-                    }
-                    else {
-                        document.getElementById('mapText1').innerHTML='<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
-                    }
-                    document.getElementById('mapText2').innerHTML='<b>Scroll Down to See the Ranked List</b>'
-                }
 
                 // UI Functions
                 var btns = document.getElementsByClassName('heatmap-btn');
@@ -605,6 +561,74 @@
        
             $(document).ready(function(){
 
+                $multiSelect = $(".js-multiple").select2({
+                    placeholder: 'Enter categorie(s), separating by comma',
+                    tags: true,
+                    tokenSeparators: [','],
+                    // selectOnClose: true,
+                    theme: "classic"
+                });
+
+                // Fill inputs with url
+                const urlParams = new URLSearchParams(window.location.search);
+                const inputs = {
+                    'search_loc': urlParams.get('search_loc'),
+                    'search_cat': urlParams.getAll('search_cat'),
+                    'search_rad': urlParams.get('search_rad'),
+                    'search_rat': urlParams.get('search_rat'),
+                    'search_key': urlParams.get('search_key'),
+                };
+                console.log(inputs['search_cat'])
+                if ('{{search_option}}' == "exact_address") {
+                    document.getElementById('search_loc').value = inputs['search_loc'];
+                    document.getElementById('search_rat1').value = inputs['search_rat']
+                }
+                if (inputs['search_cat']) {
+                    inputs['search_cat'].forEach(function (item, index) {
+                        if ($multiSelect.find("option[value='" + item + "']").length) {
+                            $multiSelect.val(item).trigger('change');
+                        } else { 
+                            // Create a DOM Option and pre-select by default
+                            var newOption = new Option(item, item, true, true);
+                            // Append it to the select
+                            $multiSelect.append(newOption).trigger('change');
+                        } 
+                    });
+                }
+                if (inputs['search_rad']) {document.getElementById('search_rad').value = inputs['search_rad'];}
+                if ('{{search_option}}' == "keyword") {
+                    document.getElementById('search_key').value = inputs['search_key'];
+                    document.getElementById('search_rat2').value = inputs['search_rat']
+                }
+
+                var clearBtn = document.getElementById("clear-input");
+                clearBtn.onclick = function(){
+                    document.getElementById('search_loc').value = '';
+                    document.getElementById('search_rat1').value = '';
+                    // document.getElementById('search_cat').value = '';
+                    document.getElementById('search_rad').value = '';
+                    document.getElementById('search_key').value = '';
+                    document.getElementById('search_rat2').value = '';
+                    $multiSelect.val(null).trigger("change");
+                }
+
+                if (exists){
+                    // change headers
+                    if (searchOption==="keyword"){
+                        document.getElementById('mapHeader').innerHTML = "Showing Results for "+ inputs['search_key'];
+                    }
+                    else{
+                        document.getElementById('mapHeader').innerHTML = "Showing "+ inputs['search_cat'] + " near " + inputs['search_loc'];
+                    }
+                    if (hasResults && count >= 3){
+                        document.getElementById('mapText1').innerHTML='<b>Explore results on the interactive map</b>'
+                    }
+                    else {
+                        document.getElementById('mapText1').innerHTML='<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
+                    }
+                    document.getElementById('mapText2').innerHTML='<b>Scroll Down to See the Ranked List</b>'
+                }
+
                 $(window).on("scroll", function() {
                     if($(window).scrollTop() > 100) {
                         $(".tm-top-bar").addClass("active");
@@ -652,16 +676,6 @@
                     }
                 });
                 
-            }
-
-            var clearBtn = document.getElementById("clear-input");
-            clearBtn.onclick = function(){
-                document.getElementById('search_loc').value = '';
-                document.getElementById('search_rat1').value = '';
-                document.getElementById('search_cat').value = '';
-                document.getElementById('search_rad').value = '';
-                document.getElementById('search_key').value = '';
-                document.getElementById('search_rat2').value = '';
             }
 
             // $(document).ready(function () {
