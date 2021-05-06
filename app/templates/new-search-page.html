@@ -728,10 +728,12 @@
                 // change headers
                 if (document.getElementById('search_key').value != '') {
                     document.getElementById('mapHeader').innerHTML = "Showing results for " + inputs['search_key'];
+                    document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
                 }
                 else if (document.getElementById('search_loc').value != '') {
                     // console.log("here?")
                     document.getElementById('mapHeader').innerHTML = "Showing " + inputs['search_cat'] + "s near " + inputs['search_loc'];
+                    document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
                 }
                 if (hasResults && count >= 3) {
                     document.getElementById('mapText1').innerHTML = '<b>Explore results on the interactive map</b>'
@@ -739,7 +741,6 @@
                 else {
                     // document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
                 }
-                document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
             }
 
             $(window).on("scroll", function () {
