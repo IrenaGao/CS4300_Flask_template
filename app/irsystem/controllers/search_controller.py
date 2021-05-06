@@ -59,6 +59,8 @@ def map_covid_vax(map_result):
         mapping_risk_level = dict(final_data[['modzcta', "risk_level"]].values)
         mapping_neighborhood = dict(final_data[['modzcta', 'modzcta_name']].values)
     
+        map_result["zip_code"] = pd.to_numeric(map_result.zip_code, errors='coerce').fillna(10000).astype(np.int64)
+
         # merge information onto candidate results by zipcode
         map_result = map_result[map_result.zip_code.astype(int).isin(nyc_modzcta)] # limit zipcode range for nyc
         map_result['positive_cases'] = map_result.zip_code.astype(int).map(mapping_pos)
@@ -173,7 +175,7 @@ def search():
     elif request.args.get("search_loc") == "":
         query_loc = request.args.get('search_key')
         query_rat = request.args.get('search_rat')
-        query_cat = ['point_of_interest']
+        query_cat = ['establishment']
         query_rad = '3000'
         search_option = "keyword"
         if (not query_loc) or (query_loc==""):
@@ -195,8 +197,8 @@ def search():
            
         except:
             error = "There is an error with your query."
-    if int(query_rad) <= 100 and data == []:
-        error = "No results, try expanding your radius!"
+        if int(query_rad) <= 100 and data == []:
+            error = "No results, try expanding your radius!"
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, search_option=search_option, error=error)
 
