@@ -123,7 +123,7 @@
                                 <!-- <input type="hidden" name="search_option" value="keyword"> -->
                                 <div class="clearfix pl-2 pr-2 tm-fx-col-xs">
                                     <div class="separator">Option 2: Keyword Search</div>
-                                    <p class="tm-lh-0 text-center">Enter a keyword and we will provide you with the relevant recommendations</p>
+                                    <p class="tm-lh-0 text-center">Enter a keyword and we will provide you with relevant recommendations</p>
                                 </div>
                                 <div class="form-row tm-search-form-row">
                                     <div class="form-group tm-form-element tm-form-element-3 tm-form-element-100" style="margin-left: 25%">
@@ -211,11 +211,11 @@
                         <p class="tm-color-white tm-section-subtitle" id='mapText3'><i class="fa fa-question"
                                 style="padding: 0 10px;"></i>How is NYC doing now? Hover over me</p>
                         <span class="tooltiptext">The percentage of fully vaccinated population for all neighborhoods in
-                            NYC ranges from <b>14.2% to 59.7%</b>, with an average of <b>25.0%</b>. <br><br>
-                            The percentage of positive cases for all neighborhoods in NYC ranges from <b>1.3%</b> to
-                            <b>12.0%</b>, with an average of <b>5.7%</b>. <br><br>
-                            The number of fully vaccinated population for all neighborhoods in NYC ranges from <b>2</b>
-                            to <b>327</b>, with an average of <b>93</b>.
+                            NYC ranges from <b>24.6% to 75.5%</b>, with an average of <b>41.5%</b>. <br><br>	
+                            The percentage of positive cases for all neighborhoods in NYC ranges from <b>0.5%</b> to	
+                            <b>5.9%</b>, with an average of <b>2.5%</b>. <br><br>	
+                            The number of fully vaccinated population for all neighborhoods in NYC ranges from <b>1</b>	
+                            to <b>173</b>, with an average of <b>40</b>.
                         </span>
                     </div>
                 </div>
@@ -320,7 +320,7 @@
                         'lon': '{{data.geolocation[d][1]}}',
                         'name': '{{data.name[d]}}',
                         '%_full_vax': "{{'%0.1f'| format(100*data.full_vax[d]|float)}}%",
-                        'people_positive': '{{data.positive_cases[d]}}',
+                        'people_positive': '{{data.positive_cases[d]|round|int}}',
                         'risk_level': '{{data.risk_level[d]}}',
                         'types': typeList,
                         'price_level': "$".repeat(Number('{{data.price_level[d]}}')),
@@ -376,7 +376,7 @@
                         <div class="separator">COVID-19 Data in {{data.neighborhood[d]}} Neighborhood</div>
                         <p>
                             <span><span class="tm-font-semibold">Positive Cases:</span>
-                                {{data.positive_cases[d]}}</span>
+                                {{data.positive_cases[d]|round|int}}</span>
                             <span><span class="tm-font-semibold">Fully Vaccinated:</span> {{'%0.1f'|
                                 format(100*data.full_vax[d]|float)}}%</span>
                             <span class="tm-font-semibold">Risk Level:</span>
@@ -410,6 +410,11 @@
                 <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Template Adapted From: <a
                         rel="nofollow" href="https://www.tooplate.com" class="tm-color-primary tm-font-normal"
                         target="_parent">Tooplate</a></p>
+                        <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Data Source: <a	
+                            href="https://github.com/nychealth/coronavirus-data/tree/master/latest"	
+                            class="tm-color-primary tm-font-normal">Up-to-Date Cases in NYC</a> and  <a	
+                            href="https://www1.nyc.gov/site/doh/covid/covid-19-data-vaccines.page"	
+                            class="tm-color-primary tm-font-normal">Vaccination Data</a></p>
                 <p class="col-sm-12 text-center tm-font-light tm-color-white tm-media-1">Image Source: <a
                         href="https://unsplash.com/@jacobybrandon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
                         class="tm-color-primary tm-font-normal">Brandon Jacoby</a> on <a
@@ -728,10 +733,12 @@
                 // change headers
                 if (document.getElementById('search_key').value != '') {
                     document.getElementById('mapHeader').innerHTML = "Showing results for " + inputs['search_key'];
+                    document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
                 }
                 else if (document.getElementById('search_loc').value != '') {
                     // console.log("here?")
                     document.getElementById('mapHeader').innerHTML = "Showing " + inputs['search_cat'] + "s near " + inputs['search_loc'];
+                    document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
                 }
                 if (hasResults && count >= 3) {
                     document.getElementById('mapText1').innerHTML = '<b>Explore results on the interactive map</b>'
@@ -739,7 +746,6 @@
                 else {
                     // document.getElementById('mapText1').innerHTML = '<b>[TODO: modify query] <a href="#" class="tm-color-white tm-font-normal"> Try again with a larger radius.</a></b>'
                 }
-                document.getElementById('mapText2').innerHTML = '<b>Scroll Down to See the Ranked List</b>'
             }
 
             $(window).on("scroll", function () {

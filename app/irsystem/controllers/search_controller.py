@@ -198,9 +198,9 @@ def search():
         except:
             error = "There is an error with your query."
         if int(query_rad) <= 100 and data == []:
-            error+= "No results, try expanding your radius!"
+            error = "No results, try expanding your radius!"
         if int(query_rat) == 5 and data == []:
-            error += "No results, try decreasing your min. rating!"
+            error = "No results, try decreasing your min. rating!"
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, search_option=search_option, error=error)
 
