@@ -320,7 +320,7 @@
                         'lon': '{{data.geolocation[d][1]}}',
                         'name': '{{data.name[d]}}',
                         '%_full_vax': "{{'%0.1f'| format(100*data.full_vax[d]|float)}}%",
-                        'people_positive': '{{data.positive_cases[d]}}',
+                        'people_positive': '{{data.positive_cases[d]|round|int}}',
                         'risk_level': '{{data.risk_level[d]}}',
                         'types': typeList,
                         'price_level': "$".repeat(Number('{{data.price_level[d]}}')),
@@ -376,7 +376,7 @@
                         <div class="separator">COVID-19 Data in {{data.neighborhood[d]}} Neighborhood</div>
                         <p>
                             <span><span class="tm-font-semibold">Positive Cases:</span>
-                                {{data.positive_cases[d]}}</span>
+                                {{data.positive_cases[d]|round|int}}</span>
                             <span><span class="tm-font-semibold">Fully Vaccinated:</span> {{'%0.1f'|
                                 format(100*data.full_vax[d]|float)}}%</span>
                             <span class="tm-font-semibold">Risk Level:</span>
