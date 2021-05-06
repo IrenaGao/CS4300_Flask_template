@@ -189,19 +189,21 @@ def edit_distance(query, message):
     return edit_matrix(query, message)[len(query),len(message)]
 
 def add_reviews(ranked_result):
-    results = ranked_result.to_dict('records')
-    for res in results:
-        place_id = res['place_id']
-        place_details = gmaps.place(place_id)['result']
-        # res['zip_code'] = place_details['address_components'][-1]['short_name']
-        # res['reviews'] = []
-        if 'reviews' in place_details:
-            reviews = place_details['reviews']
-            for review in reviews:
-                review_text = {}
-                reviewer = review['author_name']
-                review_text[reviewer] = review['text']
-                res['reviews'].append(review_text)
+    results = []
+    if len(ranked_result) != 0:
+        results = ranked_result.to_dict('records')
+        for res in results:
+            place_id = res['place_id']
+            place_details = gmaps.place(place_id)['result']
+            # res['zip_code'] = place_details['address_components'][-1]['short_name']
+            # res['reviews'] = []
+            if 'reviews' in place_details:
+                reviews = place_details['reviews']
+                for review in reviews:
+                    review_text = {}
+                    reviewer = review['author_name']
+                    review_text[reviewer] = review['text']
+                    res['reviews'].append(review_text)
     return pd.DataFrame(results)
 
 def pre_get_results_keyword(query, category):
@@ -267,6 +269,7 @@ def pre_get_results_exact_address(address, category, radius):
 
 def merge_postings(data, categories):
     sim_list = []
+    data = data.reset_index(drop=True)
     for res in data.index:
         sim_score = 0
         if data["types"][res] != None:

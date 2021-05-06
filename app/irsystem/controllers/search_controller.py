@@ -25,8 +25,8 @@ def get_results_exact_address(address, category_queries, radius):
     category_matches = match_category(category_queries)
     results = pre_get_results_exact_address(address, category_matches[0][1], radius)
     if len(category_matches) > 1:
-        for category in category_matches[1:][1]:
-            results = results.append(pre_get_results_exact_address(address, category, radius))
+        for category in category_matches[1:]:
+            results = results.append(pre_get_results_exact_address(address, category[1], radius))
     results.drop_duplicates(subset=["geolocation"], inplace=True)
     results_with_sim = merge_postings(results, [cat[1] for cat in category_matches])
     return results_with_sim
@@ -69,10 +69,9 @@ def map_covid_vax(map_result):
         map_result['risk'] = map_result.zip_code.astype(int).map(mapping_risk)
         map_result['risk_level'] = map_result.zip_code.astype(int).map(mapping_risk_level)
         map_result['neighborhood'] = map_result.zip_code.astype(int).map(mapping_neighborhood)
-    
     return map_result
 
-def rank_results(data, search_option, min_rating=0.0):
+def rank_results(data, search_option, min_rating):
     """ 
     This apply all filters to the results: 
     including risk score(covid positive #, positive %, vax %), rating score, …
@@ -96,18 +95,17 @@ def rank_results(data, search_option, min_rating=0.0):
             n_distance = 0 if data.distance.max() <= 0 else data.distance / data.distance.max()
         elif search_option == "keyword":
             n_distance = 0
-
         # compute weighted score
         n_sim_categories = 0 if data['sim_categories'].max() <= 0 else data['sim_categories']/data['sim_categories'].max()
         data['score'] = 2*data['risk'] + n_sim_categories + 0.5*(n_rating - n_distance) 
         data['score'] = round(data['score'], 4)
-        # print(data['score'])
-
-        # sort by score
         data = data.sort_values(by='score', ascending=False, na_position='last')
-        data = data[data.rating >= min_rating]     # drop results below min_rating if specified
-
-    return data.head(10)
+        data["rating"] = data['rating'].fillna(2.5)
+        data = data[data.rating.astype(float) >= float(min_rating)]     # drop results below min_rating if specified
+    if len(data) >= 10:
+        return data.head(10)
+    else:
+        return data
 
 def get_covid_data(category, search_option, location, radius, min_rating):
     """
@@ -129,7 +127,7 @@ def get_covid_data(category, search_option, location, radius, min_rating):
     elif search_option == "keyword" and len(location) > 0:
         result = get_results_keyword(location, category)
     mapped_result = map_covid_vax(result)
-    ranked_result = rank_results(mapped_result, search_option, min_rating=0.0)
+    ranked_result = rank_results(mapped_result, search_option, min_rating)
     final_result = add_reviews(ranked_result)
 
     # Cap first letter and replace underscore with space
@@ -137,9 +135,11 @@ def get_covid_data(category, search_option, location, radius, min_rating):
     #     for t_idx in range(len(ranked_result['types'][idx])):
     #         ranked_result['types'][idx][t_idx] = (ranked_result['types'][idx][t_idx].replace("_", " ")).capitalize()
     
-    json_data = ranked_result.to_json(orient="columns")
-
-    return json.loads(json_data)
+    if not final_result.empty:
+        json_data = ranked_result.to_json(orient="columns")
+        return json.loads(json_data)
+    else:
+        return []
         
 
 @irsystem.route('/', methods=['GET'])
@@ -198,7 +198,9 @@ def search():
         except:
             error = "There is an error with your query."
         if int(query_rad) <= 100 and data == []:
-            error = "No results, try expanding your radius!"
+            error+= "No results, try expanding your radius!"
+        if int(query_rat) == 5 and data == []:
+            error += "No results, try decreasing your min. rating!"
 
     return render_template('new-search-page.html', name=project_name, netid=net_id, data=data, search_option=search_option, error=error)
 
