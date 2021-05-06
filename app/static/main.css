@@ -722,6 +722,15 @@ footer a:hover{
 	color: #5d5f5c;
 }
 
+a {
+	color: white;
+}
+
+a:hover {
+	font-weight: bold;
+	color: white;
+}
+
 @media screen and (max-width: 991px) {
 	.tm-top-bar.active, .tm-top-bar, .tm-top-bar-bg { height: 65px; }
 	.tm-top-bar.active .navbar-expand-lg .navbar-nav .nav-link,
