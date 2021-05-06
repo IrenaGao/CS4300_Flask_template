@@ -168,7 +168,11 @@ p {
 
 .tm-top-bar.active .navbar-expand-lg .navbar-nav .nav-link { padding: 30px 35px; }
 .tm-top-bar-bg { height: 119px; }
-.tm-section { min-height: 515px; }
+.tm-section { 
+	min-height: 515px; 
+	z-index: -1;
+	position: relative;
+}
 
 .tm-section-pad {
 	padding-top: 80px;
@@ -722,11 +726,13 @@ footer a:hover{
 	color: #5d5f5c;
 }
 
-a {
+.versions a {
 	color: white;
+	z-index: 1000;
+	position: relative;
 }
 
-a:hover {
+.versions a:hover {
 	font-weight: bold;
 	color: white;
 }
